@@ -1,13 +1,11 @@
-
-import BrowseMedia from './pages/BrowseMedia';
-
+import Soda from "./pages/Soda"
 
 function App() {
 
 
   return (
     <>
-      <BrowseMedia/>
+      <Soda/>
     </>
   )
 }

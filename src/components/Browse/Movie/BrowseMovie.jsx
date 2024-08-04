@@ -6,7 +6,7 @@ function BrowseMovie({ datan }) {
     <>
       <div>
         <div
-          className="w-full h-auto grid grid-cols-6 place-content-center grid-rows-3 grid-flow-row gap-2 justify-between"
+          className="w-full h-auto grid px-52 grid-cols-3 place-content-center grid-rows-3 grid-flow-row gap-2 justify-between"
           style={{ backgroundImage: "radial-gradient(white, black)" }}
         >
           {datan.map((movie) => (

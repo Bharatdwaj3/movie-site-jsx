@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState} from "react";
 import BrowseMovie from "./BrowseMovie";
-import Pagination from "../../../helpers/Pagination";
+import Pagination from "../../helpers/Pagination";
 
 let totalPages;
 
