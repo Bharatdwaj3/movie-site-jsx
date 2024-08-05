@@ -1,33 +1,32 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import axios from "axios";
-import { useState} from "react";import Cards from './Cards'
+import { useState, useEffect } from "react";
+import Cards from './Cards';
 import Pagination from "./../helpers/Pagination";
 import Filter from "./Filter";
 
-let totalPages;
 function Soda() {
+  const [BrowseMovieData, setBrowseMovieData] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+const[genre,setGenre]=useState([])
+  const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
-const [BrowseMovieData, setBrowseMovieData] = useState([]);
-let [pageNumber, setPageNumber]=useState(1);
+  useEffect(() => {
+    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&with_genres=${genre}
+                  &sort_by=popularity.desc&api_key=${publicKey}`;
 
-
-const publicKey = import.meta.env.VITE_PUBLIC_KEY;
-
-const Murl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=
- ${pageNumber}sort_by=popularity.desc&api_key=${publicKey}`;
-
-axios
-  .get(Murl)
-  .then((response) => {
-    setBrowseMovieData(response.data.results);
-    totalPages = response.data.total_pages;
-  })
-  .catch((error) => {
-    console.error("Error fetching trending movies:", error);
-  });
-
-
+    axios
+      .get(url)
+      .then((response) => {
+        setBrowseMovieData(response.data.results);
+        setTotalPages(response.data.total_pages);
+      })
+      .catch((error) => {
+        console.error("Error fetching trending movies:", error);
+      });
+  }, [pageNumber,genre, publicKey]); 
 
   return (
     <>
@@ -40,8 +39,7 @@ axios
       <div className="py-56">
         <div className="container">
           <div className="row">
-            <Filter />
-            
+            <Filter serGenre={setGenre}/>
             <div className="col-9">
               <div className="row">
                 <Cards data={BrowseMovieData} />
@@ -61,5 +59,4 @@ axios
   );
 }
 
-export default Soda
- 
+export default Soda;
