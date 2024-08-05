@@ -10,10 +10,14 @@ function Soda() {
 
 const [BrowseMovieData, setBrowseMovieData] = useState([]);
 let [pageNumber, setPageNumber]=useState(1);
+const [genre, setGenre] = useState(null);
+
+
 
 const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
-const Murl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&&page=${pageNumber}&sort_by=popularity.desc&api_key=${publicKey}`;
+const Murl = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=
+ ${pageNumber}&with_genres=${genre}sort_by=popularity.desc&api_key=${publicKey}`;
 
 axios
   .get(Murl)
@@ -38,7 +42,8 @@ axios
       <div className="py-56">
         <div className="container">
           <div className="row">
-            <Filter />
+            <Filter setGenre={setGenre}/>
+            
             <div className="col-9">
               <div className="row">
                 <Cards data={BrowseMovieData} />

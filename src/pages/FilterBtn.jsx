@@ -1,27 +1,32 @@
-function FilterBtn() {
+function FilterBtn({name, index, item , task}) {
   return (
     <>
+    <style jsx>
+      {`
+      
+      .x:checked+label
+      {
+        background-color:#b5ed7;
+        color:white;
+      }
+      input[type="radio"]{
+      display:none;}`
+
+      }
+    </style>
       <div className="form-check">
         <input
+        onClick={()=>{
+          task(item);
+        }}
           className="form-check-input"
           type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault1"
+          name={name}
+          id={`${name}-${index}`}
+          
         />
-        <label className="btn btn-outline-primary" htmlFor="flexRadioDefault1">
-          Single toggle
-        </label>
-      </div>
-      <div className="form-check">
-        <input
-          className="form-check-input"
-          type="radio"
-          name="flexRadioDefault"
-          id="flexRadioDefault2"
-          checked
-        />
-        <label className="btn btn-outline-primary" htmlFor="flexRadioDefault2">
-          Single toggle
+        <label className="btn btn-outline-primary" htmlFor={`${name}-${index}`}>
+          {item}
         </label>
       </div>
     </>
