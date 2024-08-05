@@ -25,6 +25,9 @@ const genres = [
 ];
 
 function Gener({ setGenre }) {
+
+
+ 
   return (
     <>
       <div className="accordion-item">
