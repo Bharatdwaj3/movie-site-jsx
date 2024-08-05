@@ -8,7 +8,7 @@ function FilterBtn() {
           name="flexRadioDefault"
           id="flexRadioDefault1"
         />
-        <label class="btn btn-outline-primary" htmlFor="btn-check-outlined">
+        <label className="btn btn-outline-primary" htmlFor="flexRadioDefault1">
           Single toggle
         </label>
       </div>
@@ -20,8 +20,8 @@ function FilterBtn() {
           id="flexRadioDefault2"
           checked
         />
-        <label className="form-check-label" htmlFor="flexRadioDefault2">
-          Default checked radio
+        <label className="btn btn-outline-primary" htmlFor="flexRadioDefault2">
+          Single toggle
         </label>
       </div>
     </>
