@@ -66,3 +66,4 @@ function Gener(setGenre) {
 }
 
 export default Gener;
+                    

@@ -12,7 +12,7 @@ function FilterBtn({name, index, item , task}) {
       input[type="radio"]{
       display:none;}`
 
-      }
+      }``
     </style>
       <div className="form-check">
         <input
