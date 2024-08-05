@@ -1,4 +1,4 @@
-function FilterBtn({name, index, item , task}) {
+function FilterBtn({name, index, item, }) {
   return (
     <>
     <style jsx>
@@ -16,9 +16,6 @@ function FilterBtn({name, index, item , task}) {
     </style>
       <div className="form-check">
         <input
-        onClick={()=>{
-          task(item);
-        }}
           className="form-check-input"
           type="radio"
           name={name}

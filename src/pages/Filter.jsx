@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import Gener from './category/Gener';
 
-function Filter({setGenre}) {
+function Filter() {
 return (
 
 <>
@@ -13,7 +13,7 @@ return (
         Clear Filters
       </div>
       <div className="accordion" id="accordionExample">
-        <Gener setGenre={setGenre}/>
+        <Gener />
       </div>
 
     </div>
