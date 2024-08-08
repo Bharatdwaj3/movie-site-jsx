@@ -14,7 +14,7 @@ function FilterBTN({ name, index, item, setGenre }) {
       </style>
       <div className="form-check">
         <input
-          onClick={() => setGenre(index,alert(`${index}`))} 
+        onKeyUp={() => setGenre(index)}
           className="form-check-input"
           type="radio"
           name={name}
