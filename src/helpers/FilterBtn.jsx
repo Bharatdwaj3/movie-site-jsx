@@ -1,4 +1,4 @@
-function FilterBTN({ name, index, item, setGenre }) {
+function FilterBtn({ name, index, item, setGenre }) {
   return (
     <>
       <style jsx>
@@ -14,7 +14,7 @@ function FilterBTN({ name, index, item, setGenre }) {
       </style>
       <div className="form-check">
         <input
-        onKeyUp={() => setGenre(index)}
+        onClick={() => setGenre(index)}
           className="form-check-input"
           type="radio"
           name={name}
@@ -23,9 +23,11 @@ function FilterBTN({ name, index, item, setGenre }) {
         <label className="btn btn-outline-primary" htmlFor={`${name}-${index}`}>
           {item}
         </label>
+      
       </div>
     </>
   );
 }
 
-export default FilterBTN;
+export default FilterBtn;
+      

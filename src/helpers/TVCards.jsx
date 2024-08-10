@@ -1,11 +1,13 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 
-function Cards({ data }) {
+function TVCards({datal}) {
+
+
   return (
     <>
-      {data.map((movie) => (
-        <div key={movie.id} className="col-3 mb-5">
+      {datal.map((tv) => (
+        <div key={tv.id} className="col-3 mb-5">
           <div className="">
             <div className="bg-slate-300 h-52 w-full rounded-t-xl">
               <img
@@ -17,8 +19,8 @@ function Cards({ data }) {
                   borderTopRightRadius: "1rem",
                   objectFit: "cover",
                 }}
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
+                src={`https://image.tmdb.org/t/p/w500/${tv.poster_path}`}
+                alt={tv.name}
               />
             </div>
             <div
@@ -39,7 +41,7 @@ function Cards({ data }) {
                   color: "white",
                 }}
               >
-                {movie.title}
+                {tv.name}
               </h1>
             </div>
           </div>
@@ -49,4 +51,4 @@ function Cards({ data }) {
   );
 }
 
-export default Cards;
+export default TVCards

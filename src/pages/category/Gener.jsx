@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-import FilterBTN from "../FilterBtn";
+import FilterBtn from './../FilterBtn';
 
 const genres = [
   { id: 28, name: "Action" },
@@ -50,7 +50,7 @@ function Gener({ setGenre }) {
         >
           <div className="accordion-body">
             {genres.map((genre) => (
-              <FilterBTN
+              <FilterBtn
                 key={genre.id}
                 name="genre"
                 index={genre.id}
