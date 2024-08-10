@@ -1,13 +1,18 @@
-import SliderPage from './SliderPage'
-import TriSliderPage from './TriSliderPage'
-
+import NowPlaying from '../components/Slides/NowPlaying'
+import Popular from '../components/Slides/Popular'
+import TopRated from '../components/Slides/TopRated'
+import UpComing from '../components/Slides/UpComing'
+import Discover from './Discover'
 function Home() {
   return (
     <>
-      <SliderPage/>
-      <TriSliderPage/>
+      <TopRated />
+      <Discover />
+      <UpComing />
+      <NowPlaying />
+      <Popular />
     </>
-  )
+  );
 }
 
 export default Home

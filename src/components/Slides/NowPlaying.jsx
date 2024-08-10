@@ -6,7 +6,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function TriSliderPage() {
+function NowPlaying() {
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
   const [slider, setSlider] = useState([]);
   const settings = {
@@ -18,7 +18,7 @@ function TriSliderPage() {
   };
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/upcoming?language=en-US&page=1&api_key=${publicKey}`;
+    const url = `https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1&api_key=${publicKey}`;
 
     axios
       .get(url)
@@ -29,9 +29,8 @@ function TriSliderPage() {
         console.error("Error fetching upcoming movies:", error);
       });
   }, [publicKey]);
-
   return (
-    <div style={{height:"400px ",width:"100%", backgroundColor:"blue"}}>
+    <div style={{ height: "400px ", width: "100%", backgroundColor: "blue" }}>
       <div
         style={{
           height: "90px",
@@ -40,7 +39,7 @@ function TriSliderPage() {
           paddingLeft: "90px",
         }}
       >
-        <h1 style={{ borderTop: "4px solid black" }}>Upcoming Movies</h1>
+        <h1 style={{ borderTop: "4px solid black" }}>Now Playing</h1>
       </div>
       <div
         style={{
@@ -104,4 +103,4 @@ function TriSliderPage() {
   );
 }
 
-export default TriSliderPage;
+export default NowPlaying;

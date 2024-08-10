@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import axios from "axios";
 
-function SliderPage() {
+function TopRated() {
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
   const [slider, setSlider] = useState([]);
 
@@ -153,4 +153,4 @@ function SliderPage() {
   );
 }
 
-export default SliderPage;
+export default TopRated;

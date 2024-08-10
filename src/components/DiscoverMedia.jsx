@@ -2,9 +2,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import TVCards from './TVCards';
+import TVCards from '../helpers/TVCards';
 import NavBar from '../helpers/NavBar'
-import MovieCards from './MovieCards'
+import MovieCards from '../pages/MovieCards'
 import Pagination from "../helpers/Pagination";
 import Filter from "../helpers/Filter";
 

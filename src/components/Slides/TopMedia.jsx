@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState } from 'react'
-import TopMovie from "../components/Top/TopMovie"
-import TopTV from "../components/Top/TopTV"
+import TopMovie from "../../components/Top/TopMovie"
+import TopTV from "../../components/Top/TopTV"
 function TopMedia() {
   const [topMovieData, setTopMovieData] = useState([]);
   const [topTVData, setTopTVData] = useState([]);
