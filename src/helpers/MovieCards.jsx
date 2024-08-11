@@ -7,40 +7,116 @@ function MovieCards({ data }) {
       {data.map((movie) => (
         <div key={movie.id} className="col-3 mb-5">
           <div className="">
-            <div className="bg-slate-300 h-52 w-full rounded-t-xl">
-              <img
-                className="img-fluid"
-                style={{
-                  width: "100%",
-                  height: "230px",
-                  borderTopLeftRadius: "1rem",
-                  borderTopRightRadius: "1rem",
-                  objectFit: "cover",
-                }}
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-              />
-            </div>
             <div
               style={{
-                background: "linear-gradient(to top, #1e293b, #000)",
-                height: "90px",
+                height: "350px",
                 width: "100%",
-                borderBottomLeftRadius: "1rem",
-                borderBottomRightRadius: "1rem",
+                backgroundColor: "gray",
+                position: "relative",
               }}
             >
-              <h1
+              <div
                 style={{
-                  textAlign: "center",
-                  paddingTop: "1.75rem",
-                  fontSize: "0.8rem",
-                  fontWeight: "bold",
-                  color: "white",
+                  backgroundColor: "blue",
+                  height: "300px",
+                  width: "100%",
+                  position: "absolute",
+                  top: "0",
                 }}
               >
-                {movie.title}
-              </h1>
+                <img
+                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                  style={{ height: "100%", width: "100%" }}
+                  alt=""
+                />
+                <div
+                  style={{
+                    backgroundColor: "transparent",
+                    height: "100%",
+                    color: "white",
+                    backgroundColor: "rgba(0, 0, 0, 0.5)",
+                    width: "100%",
+                    position: "absolute",
+                    top: "0",
+                  }}
+                >
+                  <h1
+                    className="badge bg-warning"
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "black",
+                      fontFamily: "sans",
+                      backdropFilter: "blur(2px)",
+                      marginTop: "0",
+                      position: "absolute",
+                      top: "19",
+                      right: "0",
+                      marginRight: "12",
+                    }}
+                  >
+                    {movie.original_language.toUpperCase()}
+                  </h1>
+
+                  <h1
+                    className="badge bg-warning"
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "black",
+                      fontFamily: "mono",
+                      backdropFilter: "blur(2px)",
+                      marginTop: "24px",
+                      position: "absolute",
+                      bottom: "0",
+                      left: "0",
+                    }}
+                  >
+                    {new Date(movie.release_date).toLocaleDateString("en-GB", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </h1>
+                  <h1
+                    className="badge bg-warning"
+                    style={{
+                      fontSize: "0.75rem",
+                      color: "black",
+                      fontFamily: "mono",
+                      backdropFilter: "blur(2px)",
+                      marginTop: "24px",
+                      position: "absolute",
+                      bottom: "0",
+                      right: "0",
+                      marginRight: "12",
+                    }}
+                  >
+                    {movie.vote_average.toFixed(1)}
+                  </h1>
+                </div>
+              </div>
+              <div
+                style={{
+                  marginTop: "290px",
+                  height: "62px",
+                  width: "100%",
+                  backgroundColor: "black",
+                  position: "absolute",
+                  opacity: "0.5",
+                }}
+              >
+                <h1
+                  style={{
+                    fontSize: "1rem",
+                    color: "white",
+                    fontFamily: "serif",
+                    backdropFilter: "blur(2px)",
+                    marginTop: "12px",
+                    textAlign: "center",
+                  }}
+                >
+                  {movie.title}
+                </h1>
+              </div>
             </div>
           </div>
         </div>

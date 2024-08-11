@@ -3,6 +3,8 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 
+import { Link } from "react-router-dom";
+
 function People() {
   const [people, setPeople] = useState([]);
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
@@ -27,6 +29,9 @@ function People() {
           <div className="col-12">
             <div className="row">
               <PeopleList sett={people} />
+              <Link to="/imppeople">
+                <button>See People</button>
+              </Link>
             </div>
           </div>
         </div>
