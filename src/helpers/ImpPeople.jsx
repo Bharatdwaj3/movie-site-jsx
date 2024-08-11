@@ -2,38 +2,51 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
+import Pagination from "../components/Pagination";
 
 
 
 function ImpPeople() {
+    const [totalPages, setTotalPages] = useState(0);
+    const [pageNumber, setPageNumber] = useState(1);
     const [ImPeople, setImPeople] = useState([]);
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/person/popular?language=en-US&api_key=${publicKey}`;
+        const url = `https://api.themoviedb.org/3/person/popular?language=en-US&page=${pageNumber}&api_key=${publicKey}`;
 
         axios
             .get(url)
             .then((response) => {
                 setImPeople(response.data.results);
+                setTotalPages(response.data.total_pages);
             })
             .catch((error) => {
                 console.error("Error fetching actorsing movies:", error);
             });
-    }, [publicKey]);
+    }, [pageNumber,publicKey]);
 
     return (
-        <div className="pt-5">
-            <div className="container text-justify">
-                <div className="row">
-                    <div className="col-12">
-                        <div className="row">
-                            <PeopleShow human={ImPeople} />
+       <>
+            <div className="pt-5">
+                <div className="container text-justify">
+                    <div className="row">
+                        <div className="col-12">
+                            <div className="row">
+                                <PeopleShow human={ImPeople} />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            <div style={{ height: '190px', background: "linear-gradient(to bottom, white, black)", }} className="bg-danger w-100 d-flex align-items-center justify-content-center">
+                <Pagination
+                    totalPages={totalPages}
+                    pageNumber={pageNumber}
+                    setPageNumber={setPageNumber}
+                />
+            </div>
+       </>
     );
 }
 
