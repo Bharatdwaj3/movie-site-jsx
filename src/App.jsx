@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import DiscoverMedia from './components/DiscoverMedia';
 import Discover from './pages/Discover';
 import ImpPeople from './helpers/ImpPeople';
+import Boss from './components/Boss'
 function App() {
   return (
     <Router>
@@ -11,6 +12,7 @@ function App() {
         <Route path="/discover" element={<Discover />} />
         <Route path="/discover/*" element={<DiscoverMedia />} />
         <Route path="/imppeople" element={<ImpPeople />} />
+        <Route path="/boss" element={<Boss />} />
       </Routes>
     </Router>
   );

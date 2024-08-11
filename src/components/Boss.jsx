@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import SearchMovie from './SearchMovie'
-import TrendingMovie from "./TopMovie";
+import TrendingMovie from "./Top/TopMovie";
 function Boss() {
   const [movieData, setMovieData] = useState([]);
   const [movieName, setMovieName] = useState("");
