@@ -16,7 +16,7 @@ function DiscoverMedia (){
     <div className="DiscoverMedia">
       <NavBar />
       <Routes>
-        <Route path="/" element={<Movies />} />
+        <Route path="/movies" element={<Movies />} />
         <Route path="/tv_shows" element={<TV_Shows />} />
       </Routes>
     </div>
