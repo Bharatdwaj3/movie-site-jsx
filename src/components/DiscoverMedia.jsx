@@ -3,26 +3,23 @@ import "bootstrap/dist/js/bootstrap";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import TVCards from '../helpers/TVCards';
-import NavBar from '../helpers/NavBar'
-import MovieCards from '../pages/MovieCards'
-import Pagination from "../helpers/Pagination";
-import Filter from "../helpers/Filter";
+import NavBar from '../components/NavBar'
+import MovieCards from '../helpers/MovieCards'
+import Pagination from "../components/Pagination";
+import Filter from "../components/Filter";
 
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-
+import { Routes, Route } from 'react-router-dom';
 
 
 function DiscoverMedia (){
   return(
-    <Router>
-      <div className="DiscoverMedia">
-        <NavBar/>
-      </div>
+    <div className="DiscoverMedia">
+      <NavBar />
       <Routes>
-        <Route path="/" element={<Movies/>}/>
-        <Route path="/tv_shows" element={<TV_Shows/>}/>
+        <Route path="/" element={<Movies />} />
+        <Route path="/tv_shows" element={<TV_Shows />} />
       </Routes>
-    </Router>
+    </div>
   )
 }
 

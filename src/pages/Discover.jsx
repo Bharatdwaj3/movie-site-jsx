@@ -5,7 +5,7 @@ import "bootstrap/dist/js/bootstrap";
 
 
 
-
+import { Link } from 'react-router-dom';
 function Discover() {
   const [discover, setDiscover] = useState([]);
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
@@ -30,6 +30,9 @@ function Discover() {
           <div className="col-12">
             <div className="row">
                <DiscoverShow set={discover} />
+              <Link to="/discover/movies">
+                <button>Go to Movies</button>
+              </Link>
             </div>
           </div>
       </div>

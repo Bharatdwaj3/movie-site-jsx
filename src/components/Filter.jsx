@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-import Gener from '../pages/category/Gener';
+import Gener from '../helpers/Gener';
 
 function Filter({setGenre}) {
 return (

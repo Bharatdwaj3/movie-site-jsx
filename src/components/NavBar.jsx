@@ -1,6 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-import {NavLink, Link} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 
 function NavBar() {
 
@@ -24,12 +24,8 @@ function NavBar() {
           </button>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <NavLink className="nav-link active" to="/">
-                Movies
-              </NavLink>
-              <NavLink className="nav-link" to="/tv_shows">
-                TV Shows
-              </NavLink>
+              <li><Link to="/discover/movies">Movies</Link></li>
+              <li><Link to="/discover/tv_shows">TV Shows</Link></li>
             </div>
           </div>
         </div>
