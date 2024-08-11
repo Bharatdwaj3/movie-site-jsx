@@ -1,15 +1,13 @@
-import Home from './pages/Home'
-import DiscoverMedia from './components/DiscoverMedia';
+import Home from "./pages/Home";
+import DiscoverMedia from "./components/DiscoverMedia";
 
 function App() {
-
-
   return (
     <>
-      <Home/>
-      <DiscoverMedia/>
+      <Home />
+      <DiscoverMedia />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
