@@ -16,100 +16,80 @@ function TopRated() {
         setSlider(response.data.results);
       })
       .catch((error) => {
-        console.error("Error fetching trending movies:", error);
+        console.error("Error fetching top-rated movies:", error);
       });
   }, [publicKey]);
 
   return (
-    <div
-      style={{ height: "600px", width: "100%", overflow: "hidden" }}
-      className="position-relative"
-    >
+    <div>
+      <div style={{ height: "100vh", width: "100vw", overflow: "hidden" }}>
       <div
         id="carouselExampleCaptions"
         className="carousel slide"
         style={{ height: "100%", width: "100%" }}
       >
-        <div className="carousel-inner">
+        <div className="carousel-inner" style={{ height: "100%" }}>
           {slider.map((slide, index) => (
             <div
               key={slide.id}
               className={`carousel-item ${index === 0 ? "active" : ""}`}
+              style={{ height: "100%" }}
             >
               <img
-                src={`https://image.tmdb.org/t/p/w500${slide.backdrop_path}`}
-                style={{ height: "600px", objectFit: "cover" }}
+                src={`https://image.tmdb.org/t/p/original${slide.backdrop_path}`}
+                style={{ height: "100%", objectFit: "cover", width: "100%" }}
                 className="d-block w-100"
                 alt={slide.title}
               />
               <div
                 className="carousel-caption d-none d-md-block"
-                style={{ top: "10px", left: "10px", textAlign: "left" }}
+                style={{
+                  left: "2px",
+                  textAlign: "left",
+                  color: "white",
+                  height:"100%",
+                  width: "50%",
+                 
+                  padding: "20px",background: "linear-gradient(to right, black, transparent)",
+
+                  borderRadius: "8px",
+                }}
               >
-                <div
-                  className="position-relative "
+                <h1 style={{ fontSize: "3rem", fontWeight: "bold", marginBottom: "20px" }}>
+                  {slide.title}
+                </h1>
+                <p style={{ fontSize: "1.2rem", lineHeight: "1.5em", height: "300px", overflow: "hidden" }}>
+                  {slide.overview}
+                </p>
+                <button
+                  type="button"
+                  className="btn btn-danger btn-lg"
                   style={{
-                    background:
-                      "linear-gradient(to left, rgba(0, 0, 0, 0), rgba(0, 0, 0, 50))",
-                    width: "700px",
+                    padding: "10px 20px",
+                    fontSize: "1rem",
+                    height:"50px",
+                    width:"190px",
+                    fontWeight: "bold",
                   }}
                 >
-                  <h5
-                    style={{
-                      fontSize: "2rem",
-                      color: "white",
-                      fontFamily: "sans",
-                      backdropFilter: "blur(2px)",
-                      width: "400px",
-                    }}
-                  >
-                    {slide.title}
-                  </h5>
-                  <p
-                    style={{
-                      fontSize: "1.2rem",
-                      color: "white",
-                      fontFamily: "Times New Roman, Times, serif",
-                      backdropFilter: "blur(2px)",
-                      width: "700px",
-                    }}
-                  >
-                    {slide.overview}
-                  </p>
-                </div>
+                  Play
+                </button><button
+                  type="button"
+                  className="btn btn-danger btn-lg"
+                  style={{
+                    padding: "10px 20px",
+                    fontSize: "1rem",
+                    height:"50px",
+                    width:"190px",
+                    fontWeight: "bold",
+                    marginLeft:"90px"
+                  }}
+                >
+                  More
+                </button>
+
               </div>
             </div>
-          ))}
-
-          <div
-            className="position-absolute top-50 start-2 translate-middle ms-5 "
-           
-          >
-            <button
-              type="button"
-              className="btn btn-outline-light "
-              style={{
-                marginLeft: "190px",
-                width: "190px",
-                backdropFilter: "blur(2px)",
-                marginTop: "200px",
-              }}
-            >
-              <h1 style={{ color: "black", fontSize: "1rem" }}>Play</h1>
-            </button>
-          </div>
-        </div>
-        <div className="carousel-indicators">
-          {slider.map((_, index) => (
-            <button
-              key={index}
-              type="button"
-              data-bs-target="#carouselExampleCaptions"
-              data-bs-slide-to={index}
-              className={index === 0 ? "active" : ""}
-              aria-current={index === 0 ? "true" : "false"}
-              aria-label={`Slide ${index + 1}`}
-            ></button>
           ))}
         </div>
         <button
@@ -118,16 +98,20 @@ function TopRated() {
           data-bs-target="#carouselExampleCaptions"
           data-bs-slide="prev"
           style={{
-            bottom: "20px",
+            top: "50%",
+            transform: "translateY(-50%)",
             height: "100px",
-            width: "30px",
-            top: "190px",
+            width: "50px",
           }}
         >
           <span
             className="carousel-control-prev-icon"
             aria-hidden="true"
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.5)", borderRadius: "50%" }}
           ></span>
+
+            
+
           <span className="visually-hidden">Previous</span>
         </button>
         <button
@@ -136,19 +120,29 @@ function TopRated() {
           data-bs-target="#carouselExampleCaptions"
           data-bs-slide="next"
           style={{
-            bottom: "20px",
+            top: "50%",
+            transform: "translateY(-50%)",
             height: "100px",
-            width: "30px",
-            top: "190px",
+            width: "50px",
           }}
         >
           <span
             className="carousel-control-next-icon"
             aria-hidden="true"
+            style={{ backgroundColor: "rgba(0, 0, 0, 0.5)", borderRadius: "50%" }}
           ></span>
           <span className="visually-hidden">Next</span>
         </button>
       </div>
+    </div>
+            <div style={{width:"100%",height:"130px",backgroundColor:"gray",
+               borderBottomRightRadius: "3rem", // 8px
+  borderBottomLeftRadius: "3rem"
+            }}>
+              <button style={{height:"50px",borderRadius:"9999px",position:"absolute",bottom:"-90px",marginRight:"32px",right:"0",width:"190px",backgroundColor:"blue"}}>
+                <h1 style={{textColor:"white",fontWeight:"700",fontSize:"18px"}}>Watch Now</h1>
+                </button>
+            </div>
     </div>
   );
 }

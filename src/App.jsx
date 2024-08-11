@@ -1,4 +1,5 @@
 import Home from './pages/Home'
+import DiscoverMedia from './components/DiscoverMedia';
 
 function App() {
 
@@ -6,6 +7,7 @@ function App() {
   return (
     <>
       <Home/>
+      <DiscoverMedia/>
     </>
   )
 }
