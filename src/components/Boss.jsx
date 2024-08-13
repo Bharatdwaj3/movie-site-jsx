@@ -4,7 +4,7 @@ import SearchMovie from './SearchMovie'
 import TrendingMovie from "./Top/TopMovie";
 function Boss() {
   const [movieData, setMovieData] = useState([]);
-  const [movieName, setMovieName] = useState("");
+  const [SearchName, setSearchName] = useState("");
 
  
   const [trendingMovieData, setTrendingData] = useState([]);
@@ -13,7 +13,7 @@ function Boss() {
 
   const getMovieData = (event) => {
     if (event.key === "Enter") {
-      const url = `https://api.themoviedb.org/3/search/movie?query=${movieName}&api_key=${publicKey}`;
+      const url = `https://api.themoviedb.org/3/search/multi?query=${SearchName}&include_adult=false&language=en-US&page=1&api_key=${publicKey}`;
 
       axios
         .get(url)
@@ -22,7 +22,7 @@ function Boss() {
           console.log(response.data);
         })
 
-      setMovieName("");
+      setSearchName("");
     }
   };
 
@@ -43,8 +43,8 @@ function Boss() {
             className="p-[2.5rem] bg-white w-96 h-[20px] absolute inset-x-56 bottom-56 rounded-xl"
             placeholder="Movie..."
             type="text"
-            value={movieName}
-            onChange={(event) => setMovieName(event.target.value)}
+            value={SearchName}
+            onChange={(event) => setSearchName(event.target.value)}
             onKeyUp={getMovieData}
           />
 
@@ -57,10 +57,6 @@ function Boss() {
           <div className="ml-20 mr-12 w-[1200px] h-auto">
             <SearchMovie data={movieData} />
           </div>
-        </div>
-        <div className="bg-lime-900 w-full h-12"></div>
-        <div className="bg-sky-900 h-auto w-full">
-          <TrendingMovie datal={trendingMovieData}/>
         </div>
       </div>
     </>

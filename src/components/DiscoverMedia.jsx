@@ -9,6 +9,7 @@ import Pagination from "../components/Pagination";
 import Filter from "../components/Filter";
 
 import { Routes, Route } from 'react-router-dom';
+import Search from "../helpers/Search";
 
 
 function DiscoverMedia (){
@@ -29,12 +30,16 @@ const Movies=()=> {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [genre,setGenre]=useState([])
+  const [search, setSearch] = useState("")
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&with_genres=${genre}
-                  &sort_by=popularity.desc&api_key=${publicKey}`;
-
+   let url;
+  if(search){
+    url = `https://api.themoviedb.org/3/search/movie?query=${search}&include_adult=false&language=en-US&page=${pageNumber}&api_key=${publicKey}`;
+  } else  { 
+    url = `https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&with_genres=${genre}&sort_by=popularity.desc&api_key=${publicKey}`;
+  }
     axios
       .get(url)
       .then((response) => {
@@ -44,7 +49,7 @@ const Movies=()=> {
       .catch((error) => {
         console.error("Error fetching trending movies:", error);
       });
-  }, [pageNumber,genre, publicKey]); 
+  }, [pageNumber,genre,search, publicKey]); 
 
   return (
     <>
@@ -54,6 +59,7 @@ const Movies=()=> {
       </div>
 
       <div className="py-56">
+        <Search setSearch={setSearch}/>
         <div className="container">
           <div className="row">
             <Filter setGenre={setGenre}/>
@@ -82,14 +88,22 @@ const TV_Shows=()=> {
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [genre,setGenre]=useState([])
+  const [search, setSearch] = useState("")
+
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&with_genres=${genre}
-                  &sort_by=popularity.desc&api_key=${publicKey}`;
+    let tvurl;
+     
+    if(search){
+      tvurl = `https://api.themoviedb.org/3/search/tv?query=${search}&include_adult=false&language=en-US&page=${pageNumber}&api_key=${publicKey}`;
+        }else{
+      
+      tvurl = `https://api.themoviedb.org/3/discover/tv?include_adult=false&include_video=false&language=en-US&page=${pageNumber}&with_genres=${genre}&sort_by=popularity.desc&api_key=${publicKey}`;
 
+    }
     axios
-      .get(url)
+      .get(tvurl)
       .then((response) => {
         setBrowseTVData(response.data.results);
         setTotalPages(response.data.total_pages);
@@ -97,13 +111,14 @@ const TV_Shows=()=> {
       .catch((error) => {
         console.error("Error fetching trending movies:", error);
       });
-  }, [pageNumber,genre, publicKey]); 
+  }, [pageNumber,genre,search, publicKey]); 
 
   return (
     <>
       <div className="bg-red-800 w-full h-20"></div>
 
       <div className="py-56">
+        <Search setSearch={setSearch} />
         <div className="container">
           <div className="row">
             <Filter setGenre={setGenre} />

@@ -4,32 +4,41 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import Pagination from "../components/Pagination";
 
-
+import Search from './Search';
 
 function ImpPeople() {
     const [totalPages, setTotalPages] = useState(0);
     const [pageNumber, setPageNumber] = useState(1);
+
+    const [search,setSearch] = useState("")
+
     const [ImPeople, setImPeople] = useState([]);
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
-
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/person/popular?language=en-US&page=${pageNumber}&api_key=${publicKey}`;
+        let url;
+        if (search) {
+            url = `https://api.themoviedb.org/3/search/person?query=${search}&include_adult=false&language=en-US&page=${pageNumber}&api_key=${publicKey}`;
+        } else {
+            url = `https://api.themoviedb.org/3/person/popular?language=en-US&page=${pageNumber}&api_key=${publicKey}`;
+        }
 
         axios
             .get(url)
             .then((response) => {
                 setImPeople(response.data.results);
                 setTotalPages(response.data.total_pages);
+
             })
             .catch((error) => {
-                console.error("Error fetching actorsing movies:", error);
+                console.error("Error fetching people data:", error);
             });
-    }, [pageNumber,publicKey]);
-
+    }, [pageNumber, search, publicKey]);
     return (
        <>
             <div className="pt-5">
+                <Search setSearch={setSearch}/>
                 <div className="container text-justify">
+                   
                     <div className="row">
                         <div className="col-12">
                             <div className="row">

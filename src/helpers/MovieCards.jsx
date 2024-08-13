@@ -4,7 +4,7 @@ import "bootstrap/dist/js/bootstrap";
 function MovieCards({ data }) {
   return (
     <>
-      {data.map((movie) => (
+      {data.map((movie) => ( 
         <div key={movie.id} className="col-3 mb-5">
           <div className="">
             <div
