@@ -1,12 +1,12 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-
-function MovieCards({ data }) {
+import { Link } from "react-router-dom";
+function MovieCards({ data, pages }) {
   return (
     <>
       {data.map((movie) => ( 
         <div key={movie.id} className="col-3 mb-5">
-          <div className="">
+          <Link to={`${pages}${movie.id}`} className="">
             <div
               style={{
                 height: "350px",
@@ -118,7 +118,7 @@ function MovieCards({ data }) {
                 </h1>
               </div>
             </div>
-          </div>
+          </Link>
         </div>
       ))}
     </>

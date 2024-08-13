@@ -1,14 +1,14 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
-
-function TVCards({datal}) {
+import { Link } from "react-router-dom";
+function TVCards({datal,page}) {
 
 
   return (
     <>
       {datal.map((tv) => (
         <div key={tv.id} className="col-3 mb-5">
-          <div className="">
+          <Link to={`${page}${tv.id}`} className="">
             <div
               style={{
                 height: "350px",
@@ -120,7 +120,7 @@ function TVCards({datal}) {
                 </h1>
               </div>
             </div>
-        </div>
+        </Link>
         </div>
       ))}
     </>

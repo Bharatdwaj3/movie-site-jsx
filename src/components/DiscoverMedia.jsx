@@ -65,7 +65,7 @@ const Movies=()=> {
             <Filter setGenre={setGenre}/>
             <div className="col-9">
               <div className="row">
-                <MovieCards data={BrowseMovieData} />
+                <MovieCards data={BrowseMovieData} pages="/discover/movies/"/>
               </div>
             </div>
           </div>
@@ -115,7 +115,7 @@ const TV_Shows=()=> {
 
   return (
     <>
-      <div className="bg-red-800 w-full h-20"></div>
+     
 
       <div className="py-56">
         <Search setSearch={setSearch} />
@@ -124,7 +124,7 @@ const TV_Shows=()=> {
             <Filter setGenre={setGenre} />
             <div className="col-9">
               <div className="row">
-                <TVCards datal={BrowseTVData} />
+                <TVCards page="/discover/tv_shows/"  datal={BrowseTVData} />
               </div>
             </div>
           </div>
