@@ -8,9 +8,9 @@ function NavBar() {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container">
-          <Link className="fs-3 ubuntu navbar-brand">
-            Rick and Morty <span className="text-primary">Wiki</span>
-          </Link>
+          <a className="fs-3 ubuntu navbar-brand">
+            Search <span className="text-primary">Media</span>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -24,8 +24,17 @@ function NavBar() {
           </button>
           <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
             <div className="navbar-nav">
-              <li><Link to="/discover/movies">Movies</Link></li>
-              <li><Link to="/discover/tv_shows">TV Shows</Link></li>
+              <li className="nav-item">
+                <Link to="/discover/movies" className="nav-link active">
+                  Movies
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/discover/tv_shows" className="nav-link">
+                  TV Shows
+                </Link>
+              </li>
+
             </div>
           </div>
         </div>
