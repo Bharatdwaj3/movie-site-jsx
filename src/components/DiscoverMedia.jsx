@@ -9,7 +9,7 @@ import Pagination from "../components/Pagination";
 import Filter from "../components/Filter";
 
 import { Routes, Route } from 'react-router-dom';
-import Search from "../helpers/Search";
+import Search from '../components/Search'
 
 
 function DiscoverMedia (){
