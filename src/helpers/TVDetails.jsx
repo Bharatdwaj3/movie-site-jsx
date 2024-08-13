@@ -27,7 +27,7 @@ function TVDetails() {
     return (
         <>
             <div>
-                <div style={{ height: "500px", width: "100%" }}>
+                <div style={{ height: "500px", width: "100%"}}>
                     <div
                         style={{
                             margin: "50px",
@@ -195,34 +195,22 @@ function TVDetails() {
                                 </p>
                             </div>
 
-                            <div
-                                style={{
-                                    height: "50%",
-                                    marginRight: "35px",
-                                    width: "890px",
-                                    position: "absolute",
-                                    bottom: "0",
-                                }}
-                            >
-                                <p>
-                                    <span
-                                        style={{
-                                            display: "block",
-                                            fontFamily: "mono",
-                                            marginTop: "30px",
-                                            textAlign: "left",
-                                            fontWeight: "light",
-                                            marginLeft: "50px",
-                                        }}
-                                    >
-                                        {TVDetail.overview}
-                                    </span>
-                                </p>
-                            </div>
                         </div>
                     </div>
+                    
+                </div>
+                <div style={{ height: "200px", width: "1256px", background: "radial-gradient(yellow, orange)", marginLeft: "50px",marginBottom:"30px"}}>
+                    <p>
+                        <h3 style={{ fontFamily: "sans", fontWeight: "bolder", textAlign:"left",marginLeft:"50px"}}>
+                            Description:
+                        </h3>
+                        <span style={{ fontFamily: "serif", fontWeight: "lighter",display:"block",marginLeft:"170px",marginTop:"40px" }}>
+                            {TVDetail.overview}
+                        </span>
+                    </p>
                 </div>
             </div>
+            
         </>
     );
 }

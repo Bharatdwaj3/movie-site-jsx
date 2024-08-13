@@ -8,9 +8,9 @@ function NavBar() {
     <>
       <nav className="navbar navbar-expand-lg bg-body-tertiary">
         <div className="container">
-          <a className="fs-3 ubuntu navbar-brand">
-            Search <span className="text-primary">Media</span>
-          </a>
+          <Link to ="/"className="fs-3 ubuntu navbar-brand">
+            Recreational <span className="text-primary">Media</span>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
