@@ -1,18 +1,22 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { Link } from "react-router-dom";
-function MovieCards({ data, pages }) {
+
+function MovieCards({ data, pages, columns = 4,limit,customStyles }) { 
+  const columnClass = `col-${12 / columns}`; 
+  const moviesToDisplay = (limit === Infinity) ? data : data.slice(0, limit);
+
   return (
     <>
-      {data.map((movie) => ( 
-        <div key={movie.id} className="col-3 mb-5">
+      {moviesToDisplay.map((movie) => (
+        <div key={movie.id} className={`${columnClass} mb-5`}>
           <Link to={`${pages}${movie.id}`} className="">
             <div
               style={{
                 height: "350px",
                 width: "100%",
                 backgroundColor: "gray",
-                position: "relative",
+                position: "relative", ...customStyles.outerDiv,
               }}
             >
               <div
@@ -21,12 +25,12 @@ function MovieCards({ data, pages }) {
                   height: "300px",
                   width: "100%",
                   position: "absolute",
-                  top: "0",
+                  top: "0", ...customStyles.imageWrapper,
                 }}
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  style={{ height: "100%", width: "100%" }}
+                  style={{ height: "100%", width: "100%", ...customStyles.image, }}
                   alt=""
                 />
                 <div
@@ -37,7 +41,7 @@ function MovieCards({ data, pages }) {
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     width: "100%",
                     position: "absolute",
-                    top: "0",
+                    top: "0", ...customStyles.overlay,
                   }}
                 >
                   <h1
@@ -51,7 +55,7 @@ function MovieCards({ data, pages }) {
                       position: "absolute",
                       top: "19",
                       right: "0",
-                      marginRight: "12",
+                      marginRight: "12", ...customStyles.languageBadge,
                     }}
                   >
                     {movie.original_language.toUpperCase()}
@@ -67,7 +71,7 @@ function MovieCards({ data, pages }) {
                       marginTop: "24px",
                       position: "absolute",
                       bottom: "0",
-                      left: "0",
+                      left: "0", ...customStyles.dateBadge,
                     }}
                   >
                     {new Date(movie.release_date).toLocaleDateString("en-GB", {
@@ -87,7 +91,7 @@ function MovieCards({ data, pages }) {
                       position: "absolute",
                       bottom: "0",
                       right: "0",
-                      marginRight: "12",
+                      marginRight: "12", ...customStyles.ratingBadge,
                     }}
                   >
                     {movie.vote_average.toFixed(1)}
@@ -101,7 +105,8 @@ function MovieCards({ data, pages }) {
                   width: "100%",
                   backgroundColor: "black",
                   position: "absolute",
-                  opacity: "0.5",
+                  bottom: "0",
+                  opacity: "0.5", ...customStyles.titleWrapper,
                 }}
               >
                 <h1
@@ -111,7 +116,7 @@ function MovieCards({ data, pages }) {
                     fontFamily: "serif",
                     backdropFilter: "blur(2px)",
                     marginTop: "12px",
-                    textAlign: "center",
+                    textAlign: "center", ...customStyles.title,
                   }}
                 >
                   {movie.title}

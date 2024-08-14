@@ -1,20 +1,22 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { Link } from "react-router-dom";
-function TVCards({datal,page}) {
 
+function TVCards({ data, page, columns = 4, limit, customStyles }) {
+  const columnClass = `col-${12 / columns}`;
+  const showsToDisplay = (limit === Infinity) ? data : data.slice(0, limit);
 
   return (
     <>
-      {datal.map((tv) => (
-        <div key={tv.id} className="col-3 mb-5">
+      {showsToDisplay.map((tv) => (
+        <div key={tv.id} className={`${columnClass} mb-5` }>
           <Link to={`${page}${tv.id}`} className="">
             <div
               style={{
                 height: "350px",
                 width: "100%",
                 backgroundColor: "gray",
-                position: "relative",
+                position: "relative", ...customStyles.outerDiv,
               }}
             >
               <div
@@ -23,12 +25,12 @@ function TVCards({datal,page}) {
                   height: "300px",
                   width: "100%",
                   position: "absolute",
-                  top: "0",
+                  top: "0", ...customStyles.imageWrapper,
                 }}
               >
                 <img
                   src={`https://image.tmdb.org/t/p/w500${tv.poster_path}`}
-                  style={{ height: "100%", width: "100%" }}
+                  style={{ height: "100%", width: "100%", ...customStyles.image, }}
                   alt=""
                 />
                 <div
@@ -39,7 +41,7 @@ function TVCards({datal,page}) {
                     backgroundColor: "rgba(0, 0, 0, 0.5)",
                     width: "100%",
                     position: "absolute",
-                    top: "0",
+                    top: "0", ...customStyles.overlay,
                   }}
                 >
                   <h1
@@ -53,7 +55,7 @@ function TVCards({datal,page}) {
                       position: "absolute",
                       top: "19",
                       right: "0",
-                      marginRight: "12",
+                      marginRight: "12", ...customStyles.languageBadge,
                     }}
                   >
                     {tv.original_language.toUpperCase()}
@@ -69,7 +71,7 @@ function TVCards({datal,page}) {
                       marginTop: "24px",
                       position: "absolute",
                       bottom: "0",
-                      left: "0",
+                      left: "0", ...customStyles.dateBadge,
                     }}
                   >
                     {new Date(tv.first_air_date).toLocaleDateString("en-GB", {
@@ -89,7 +91,7 @@ function TVCards({datal,page}) {
                       position: "absolute",
                       bottom: "0",
                       right: "0",
-                      marginRight: "12",
+                      marginRight: "12", ...customStyles.ratingBadge,
                     }}
                   >
                     {tv.vote_average.toFixed(1)}
@@ -103,7 +105,8 @@ function TVCards({datal,page}) {
                   width: "100%",
                   backgroundColor: "black",
                   position: "absolute",
-                  opacity: "0.5",
+                  bottom: "0",
+                  opacity: "0.5", ...customStyles.titleWrapper,
                 }}
               >
                 <h1
@@ -113,14 +116,14 @@ function TVCards({datal,page}) {
                     fontFamily: "serif",
                     backdropFilter: "blur(2px)",
                     marginTop: "12px",
-                    textAlign: "center",
+                    textAlign: "center", ...customStyles.title,
                   }}
                 >
                   {tv.name}
                 </h1>
               </div>
-            </div>
-        </Link>
+            </div> 
+          </Link>
         </div>
       ))}
     </>

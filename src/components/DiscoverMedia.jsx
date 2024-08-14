@@ -24,7 +24,6 @@ function DiscoverMedia (){
   )
 }
 
-
 const Movies=()=> {
   const [BrowseMovieData, setBrowseMovieData] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
@@ -53,10 +52,7 @@ const Movies=()=> {
 
   return (
     <>
-      <div className="bg-red-800 w-full h-20">
-      
-       
-      </div>
+
 
       <div className="py-56">
         <Search setSearch={setSearch}/>
@@ -65,7 +61,14 @@ const Movies=()=> {
             <Filter setGenre={setGenre}/>
             <div className="col-9">
               <div className="row">
-                <MovieCards data={BrowseMovieData} pages="/discover/movies/"/>
+                <MovieCards
+                  data={BrowseMovieData}
+                  pages="/discover/movies/"
+                  columns={4}
+                  limit={Infinity}
+                  customStyles={{}}
+                />
+
               </div>
             </div>
           </div>
@@ -124,7 +127,13 @@ const TV_Shows=()=> {
             <Filter setGenre={setGenre} />
             <div className="col-9">
               <div className="row">
-                <TVCards page="/discover/tv_shows/"  datal={BrowseTVData} />
+              <TVCards
+                  data={BrowseTVData}
+                  page="/discover/tv_shows/"
+                  columns={4}
+                  limit={Infinity}
+                  customStyles={{}}
+                />
               </div>
             </div>
           </div>

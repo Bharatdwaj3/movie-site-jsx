@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import MRecoment from './MRecoment';
 
 function MDetails() {
     let { id } = useParams();
@@ -8,8 +9,8 @@ function MDetails() {
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/movie/${id}?api_key=${publicKey}`;
-
+        const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${publicKey}`;
+        
         axios
             .get(url)
             .then((response) => {
@@ -27,51 +28,193 @@ function MDetails() {
     return (
         <>
             <div>
-                <div style={{ height: "500px", width: "100%" }}>
-                    <div style={{ margin: "50px", height: "500px", width: "full", background: "radial-gradient(yellow, orange)", position: "relative" }}>
-                        <div style={{
-                            height: "50%", width: "290px", position: "absolute", borderRadius: "8px", left: "0"
-                        }}>
+                <div style={{ height: "700px", width: "100%" }}>
+                    <div
+                        style={{
+                            margin: "50px",
+                            height: "700px",
+                            width: "full",
+                            background: "radial-gradient(yellow, orange)",
+                            position: "relative",
+                        }}
+                    >
+                        <div
+                            style={{
+                                height: "50%",
+                                width: "290px",
+                                position: "absolute",
+                                borderRadius: "8px",
+                                left: "0",
+                            }}
+                        >
                             <img
                                 src={`https://image.tmdb.org/t/p/w500/${MovieDetail.poster_path}`}
-                                style={{ objectFit: "contain", borderRadius: "1.5rem", width: "100%", height: "100%" }}
-                                alt=""
+                                style={{
+                                    objectFit: "contain",
+                                    borderRadius: "1.5rem",
+                                    width: "100%",
+                                    height: "100%",
+                                }}
+                                alt={MovieDetail.title}
                             />
                         </div>
-                        <div style={{ height: "100%", marginRight: "35px", width: "890px", position: "absolute", right: "0" }}>
-                            <div style={{ height: "50%", marginRight: "35px", width: "890px", position: "absolute", top: "0" }}>
-                                <h1 style={{ fontFamily: "sans", textAlign: "center" }}>{MovieDetail.title}</h1>
+                        <div
+                            style={{
+                                height: "100%",
+                                marginRight: "35px",
+                                width: "890px",
+                                position: "absolute",
+                                right: "0",
+                            }}
+                        >
+                            <div
+                                style={{
+                                    height: "50%",
+                                    marginRight: "35px",
+                                    width: "890px",
+                                    position: "absolute",
+                                    top: "0",
+                                }}
+                            >  
+                                <h1 style={{ fontFamily: "sans", textAlign: "center" }}>
+                                    {MovieDetail.title}
+                                </h1>
                                 <p>
-                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>Original Language:</span>
-                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> {MovieDetail.original_language.toUpperCase()}</span>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
+                                        Original Language: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>
+                                        {MovieDetail.original_language.toUpperCase()}
+                                    </span>
+                                </p>
+
+                                <p>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}> Revenue: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>$ {MovieDetail.revenue}
+                                    </span>
                                 </p>
                                 <p>
-                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>Popularity:</span>
-                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> {MovieDetail.popularity}</span>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}> Tag Line: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> "{MovieDetail.tagline}"
+                                    </span>
                                 </p>
                                 <p>
-                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>Release Date:</span>
-                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> {new Date(MovieDetail.release_date).toLocaleDateString("en-GB", {
-                                        day: "numeric",
-                                        month: "long",
-                                        year: "numeric",
-                                    })}</span>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}> Runtime: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> {MovieDetail.runtime} minutes
+                                    </span>
                                 </p>
                                 <p>
-                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>Vote:</span>
-                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> {MovieDetail.vote_average.toFixed(1)}</span>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}> Budget: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> $ {MovieDetail.budget}
+                                    </span>
+                                </p>
+                                
+                                <p>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
+                                        Popularity: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>
+                                        {MovieDetail.popularity}
+                                    </span>
+                                </p>
+                             
+                                <p>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
+                                        Spoken Languages: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>
+                                        {MovieDetail.spoken_languages.map((lang, index) => (
+                                            <span key={index}>
+                                                {lang.english_name}
+                                                {index < MovieDetail.spoken_languages.length - 1
+                                                    ? ", "
+                                                    : ""}
+                                            </span>
+                                        ))}
+                                    </span>
+                                </p>
+                                <p>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
+                                        Production Companies: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>
+                                        {MovieDetail.production_companies.map((prod, index) => (
+                                            <span key={index}>
+                                                {prod.name}
+                                                {index < MovieDetail.production_companies.length - 1
+                                                    ? ", "
+                                                    : ""}
+                                            </span>
+                                        ))}
+                                    </span>
+                                </p>
+                                <p>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
+                                        Production Countries: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>
+                                        {MovieDetail.production_countries.map((country, index) => (
+                                            <span key={index}>
+                                                {country.name}
+                                                {index < MovieDetail.production_countries.length - 1
+                                                    ? ", "
+                                                    : ""}
+                                            </span>
+                                        ))}
+                                    </span>
+                                </p>
+                                <p>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
+                                        Genres: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>
+                                        {MovieDetail.genres.map((country, index) => (
+                                            <span key={index}>
+                                                {country.name}
+                                                {index < MovieDetail.genres.length - 1
+                                                    ? ", "
+                                                    : ""}
+                                            </span>
+                                        ))}
+                                    </span>
+                                </p>
+                               
+                                <p>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
+                                        Release Date: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>
+                                        {new Date(MovieDetail.release_date).toLocaleDateString(
+                                            "en-GB",
+                                            {
+                                                day: "numeric",
+                                                month: "long",
+                                                year: "numeric",
+                                            }
+                                        )}
+                                    </span>
+                                </p>
+                                <p>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
+                                        Vote Average: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>
+                                        {MovieDetail.vote_average.toFixed(1)}
+                                    </span>
                                 </p>
                             </div>
 
-                            <div style={{ height: "50%", marginRight: "35px", width: "890px", position: "absolute", bottom: "0" }}>
-                                <p>
-                                    <span style={{ display: "block", fontFamily: "mono", marginTop: "30px", textAlign: "left", fontWeight: "light", marginLeft: "50px" }}>{MovieDetail.overview}</span>
-                                </p>
-                            </div>
                         </div>
                     </div>
+
+                </div>
+                <div style={{ height: "200px", width: "1256px", background: "radial-gradient(yellow, orange)", marginLeft: "50px", marginBottom: "30px" }}>
+                    <p>
+                        <h3 style={{ fontFamily: "sans", fontWeight: "bolder", textAlign: "left", marginLeft: "50px" }}>
+                            Description:
+                        </h3>
+                        <span style={{ fontFamily: "serif", fontWeight: "lighter", display: "block", marginLeft: "170px", marginTop: "40px" }}>
+                            {MovieDetail.overview}
+                        </span>
+                    </p>
                 </div>
             </div>
+            <div>
+                <MRecoment id={id}/>
+            </div>
+           
         </>
     );
 }
