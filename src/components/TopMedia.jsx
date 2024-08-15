@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState,useEffect } from 'react'
-import MediaCard from '../../helpers/MediaCard';
+import MediaCard from '../helpers/MediaCard';
 
 function TopMedia() {
   const [trendMovie, settrendMovie] = useState([]);
