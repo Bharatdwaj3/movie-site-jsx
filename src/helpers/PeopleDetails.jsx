@@ -1,11 +1,13 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
+import PeopleCredits from './PeopleCredits';
 
 function PeopleDetails() {
   let { id } = useParams();
   const [ImPerson, setImPerson] = useState(null); 
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+
 
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/person/${id}?api_key=${publicKey}`;
@@ -27,8 +29,8 @@ function PeopleDetails() {
   return (
     <>
       <div>
-        <div style={{height:"500px",width:"100%"}}>
-          <div style={{ margin: "50px", height: "500px", width: "full", background: "radial-gradient(yellow, orange)",position:"relative" }}>
+        <div style={{ height: "500px", width: "100%", marginTop: "90px",marginBottom: "90px" }}>
+          <div style={{ margin: "50px", height: "500px", width: "full", background: "radial-gradient(blue, gray)",position:"relative" }}>
             <div style={{
               height: "50%", width: "290px", position: "absolute", borderRadius: "8px", left: "0" }}>
               <img src={`https://image.tmdb.org/t/p/w500/${ImPerson.profile_path}`} style={{objectFit:"contain",borderRadius:"1.5rem",width:"100%",height:"100%",}} alt="" />
@@ -90,6 +92,7 @@ function PeopleDetails() {
             </div>
           </div>
         </div>
+          <PeopleCredits id={id}/>
       </div>
       
     </>
