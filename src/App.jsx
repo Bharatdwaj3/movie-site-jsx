@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import DiscoverMedia from './pages/DiscoverMedia';
-import ImpPeople from './helpers/ImpPeople';
-import PeopleDetails from './helpers/PeopleDetails';
-import MDetails from './helpers/MDetails';
-import TV_Show_Details from './helpers/TV_Show_Details';
+import ImpPeople from './helpers/People/ImpPeople';
+import PeopleDetails from './helpers/People/PeopleDetails';
+import MDetails from './helpers/Movies_/MDetails';
+import TV_Show_Details from './helpers/TV_shows/TV_Show_Details';
 import NavBar from './components/NavBar';
 
 function App() {

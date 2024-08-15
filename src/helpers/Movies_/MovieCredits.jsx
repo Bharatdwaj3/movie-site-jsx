@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import PeopleCard from './PeopleCard';
+import PeopleCard from '../People/PeopleCard';
 
 function MovieCredits({id}) {
 

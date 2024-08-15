@@ -1,7 +1,7 @@
 import axios from "axios"
 import { useState,useEffect } from 'react'
-import MovieCards from "../../helpers/MovieCards";
-import TVCards from "../../helpers/TVCards";
+import MovieCards from "../../helpers/Movies_/MovieCards";
+import TVCards from "../../helpers/TV_shows/TVCards";
 
 
 function TopMedia() {
