@@ -3,7 +3,7 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { Link } from "react-router-dom";
-import PeopleCard from "../helpers/PeopleCard";
+import PeopleCard from "../helpers/People/PeopleCard";
 
 function People() {
   const [people, setPeople] = useState([]);

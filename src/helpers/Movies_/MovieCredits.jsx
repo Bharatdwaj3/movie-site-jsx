@@ -1,12 +1,13 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
-import PeopleCard from '../People/PeopleCard';
+import axios from 'axios';;
+import MediaCard from './../MediaCard';
 
 function MovieCredits({id}) {
 
     const [credits, setCredits] = useState([]);
     const [crew, setCrew] = useState([]);
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+
 
 
 
@@ -41,7 +42,7 @@ function MovieCredits({id}) {
                       <div className="col-12">
                           <div className="row">
 
-                              <PeopleCard
+                              <MediaCard
                                   data={credits}
                                   page="/imppeople/"
                                   columns={6}
@@ -73,7 +74,7 @@ function MovieCredits({id}) {
                       <div className="col-12">
                           <div className="row">
 
-                              <PeopleCard
+                              <MediaCard
                                   data={crew}
                                   page="/imppeople/"
                                   columns={6}

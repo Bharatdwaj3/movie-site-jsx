@@ -7,6 +7,7 @@ function TVCredits({ id }) {
     const [crew, setCrew] = useState([]);
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
+
     useEffect(() => {
         const url = `https://api.themoviedb.org/3/tv/${id}/credits?language=en-US&api_key=${publicKey}`;
 

@@ -2,11 +2,10 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import TVCards from '../helpers/TV_shows/TVCards';
-import MovieCards from '../helpers/Movies_/MovieCards'
+
 import Pagination from "../components/Pagination";
 import Filter from "../components/Filter";
-
+import MediaCard from './../helpers/MediaCard';
 import { Routes, Route } from 'react-router-dom';
 import Search from '../components/Search'
 
@@ -60,7 +59,7 @@ const Movies=()=> {
             <Filter setGenre={setGenre}/>
             <div className="col-9">
               <div className="row">
-                <MovieCards
+                <MediaCard
                   data={BrowseMovieData}
                   pages="/discover/movies/"
                   columns={4}
@@ -94,6 +93,8 @@ const TV_Shows=()=> {
 
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
+
+
   useEffect(() => {
     let tvurl;
      
@@ -126,7 +127,7 @@ const TV_Shows=()=> {
             <Filter setGenre={setGenre} />
             <div className="col-9">
               <div className="row">
-              <TVCards
+              <MediaCard
                   data={BrowseTVData}
                   page="/discover/tv_shows/"
                   columns={4}

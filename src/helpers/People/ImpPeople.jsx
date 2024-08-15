@@ -6,6 +6,7 @@ import Pagination from "../../components/Pagination";// Ensure this import is pr
 import Search from '../../components/Search';
 import PeopleCard from "./PeopleCard";
 
+
 function ImpPeople() {
     const [totalPages, setTotalPages] = useState(0);
     const [pageNumber, setPageNumber] = useState(1);
@@ -40,7 +41,7 @@ function ImpPeople() {
                     <div className="row">
                         <div className="col-12">
                             <div className="row">
-                                <PeopleCard 
+                                <PeopleCard
                                     data={ImPeople}
                                     page="/imppeople/" 
                                     columns={4}

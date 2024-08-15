@@ -1,14 +1,13 @@
 import axios from "axios"
 import { useState,useEffect } from 'react'
-import MovieCards from "../../helpers/Movies_/MovieCards";
-import TVCards from "../../helpers/TV_shows/TVCards";
-
+import MediaCard from '../../helpers/MediaCard';
 
 function TopMedia() {
   const [trendMovie, settrendMovie] = useState([]);
   const [trendTV, settrendTV] = useState([]);
 
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+
 
   useEffect(()=>{
     const Murl = `https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=${publicKey}`;
@@ -76,7 +75,7 @@ function TopMedia() {
               </div>
               <div className="container">
                 <div className="row">
-                  <MovieCards
+                  <MediaCard
                     data={trendMovie}
                     pages="/discover/movies/"
                     columns={6}
@@ -126,7 +125,7 @@ function TopMedia() {
               </div>
               <div className="container">
                 <div className="row">
-                  <TVCards
+                  <MediaCard
                     data={trendTV}
                     page="/discover/tv_shows/"
                     columns={6}

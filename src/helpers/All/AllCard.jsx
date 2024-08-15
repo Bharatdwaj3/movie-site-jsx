@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { Link } from "react-router-dom";
 
-function AllCards({ data, columns = 4, limit, customStyles }) {
+function AllCard({ data, columns = 4, limit, customStyles }) {
   const columnClass = `col-${12 / columns}`;
   const credToDisplay = (limit === Infinity) ? data : data.slice(0, limit);
 
@@ -160,4 +160,4 @@ function AllCards({ data, columns = 4, limit, customStyles }) {
   );
 }
 
-export default AllCards;
+export default AllCard;

@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { Link } from "react-router-dom";
 
-function MediaCard({ data, page, columns = 4, limit, customStyles }) {
+function MediaCards({ data, page, columns = 4, limit, customStyles }) {
     const columnClass = `col-${12 / columns}`;
     const itemsToDisplay = (limit === Infinity) ? data : data.slice(0, limit);
 
@@ -146,4 +146,4 @@ function MediaCard({ data, page, columns = 4, limit, customStyles }) {
     );
 }
 
-export default MediaCard;
+export default MediaCards;

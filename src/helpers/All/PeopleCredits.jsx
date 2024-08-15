@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import AllCards from './AllCard';
+import AllCard from './AllCard'
+
 function PeopleCredits({id}) {
   const [crew, setCrew] = useState([]);
   const [credits, setCredits] = useState([]);
@@ -39,7 +40,7 @@ function PeopleCredits({id}) {
             <div className="col-12">
               <div className="row">
 
-                <AllCards
+                <AllCard
                   data={credits}
                   page="/discover/"
                   columns={6}
@@ -71,7 +72,7 @@ function PeopleCredits({id}) {
             <div className="col-12">
               <div className="row">
 
-                <AllCards
+                <AllCard
                   data={crew}
                   page="/discover/"
                   columns={6}
