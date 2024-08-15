@@ -34,6 +34,11 @@ function NavBar() {
                   TV Shows
                 </Link>
               </li>
+              <li className="nav-item">
+                <Link to="/imppeople" className="nav-link">
+                  People
+                </Link>
+              </li>
 
             </div>
           </div>

@@ -1,9 +1,8 @@
 import { useState, useEffect } from "react";
 import Carousel from 'react-bootstrap/Carousel';
 import axios from "axios";
-import { FaStar, FaFilm, FaHeart, FaBookmark } from 'react-icons/fa';
-import { MdLocalFireDepartment } from "react-icons/md"
-import { FaPlay } from 'react-icons/fa';
+import { FaStar, FaFilm, FaHeart, FaBookmark, FaPlay,FaStarHalf } from 'react-icons/fa';
+import { MdLocalFireDepartment } from "react-icons/md";
 import { Button } from 'react-bootstrap';
 
 function Banner() {
@@ -35,159 +34,142 @@ function Banner() {
     }, [publicKey]);
 
     return (
-        <div style={{ height: "900px", width: "100%", marginBottom: "50px", position: "relative", overflow: "hidden" }}>
+        <div style={{ height: "900px", width: "100%", position: "relative", overflow: "hidden" ,marginBottom:"90px"}}>
             <Carousel style={{ height: "100%", width: "100%" }}>
                 {slider.map((slide) => (
                     <Carousel.Item key={slide.id}>
-                        <div style={{ height: "900px", width: "100%", position: "relative", }}>
+                        <div style={{ height: "900px", width: "100%", position: "relative" }}>
                             <img
                                 src={`https://image.tmdb.org/t/p/original${slide.backdrop_path}`}
                                 style={{ height: "100%", objectFit: "cover", width: "100%" }}
                                 className="d-block w-100"
                                 alt={slide.title}
                             />
-                            <div style={{height: "90px", width: "auto", position: "absolute", top: "360px", background: "linear-gradient(to bottom, black, transparent)" }}>
-                                <h1 style={{ textAlign: "left", fontFamily: "serif", fontSize: "4rem", color: "white" }}>
-                                    {slide.title}
-                                </h1>
-                            </div>
-                            <div style={{ height: "50%", width: "100%", position: "absolute", bottom: "0", background: "linear-gradient(to right, black, transparent)"}}>
-                                <div style={{ position: "absolute", bottom: "0", width: "70%", height: "100%", left: "0" }}>
-                                    <div style={{ position: "absolute", top: "0", marginLeft: "90px", height: "90px", width: "57.3%" }}>
-                                        <div style={{ height: "50%", width: "50%", position: "absolute", top: "0", left: "0" }}>
-                                            {Array(5).fill().map((_, index) => (
-                                                <FaStar key={index} size={24} style={{ marginRight: "5px", color: "yellow" }} />
+                            <div style={{
+                                position: "absolute",
+                                bottom: "0",
+                                left: "0",
+                                width: "100%",
+                                height: "70%",
+                                background: "linear-gradient(to top, black, transparent)",
+                                padding: "20px",
+                                boxSizing: "border-box",
+                                color: "white",
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "space-between"
+                            }}>
+                                <div>
+                                    <h1 style={{ fontFamily: "serif", fontSize: "4rem", margin: "0" }}>
+                                        {slide.title}
+                                    </h1>
+                                 
+                                        <div style={{ marginTop: "20px" }}>
+                                            <div style={{ display: "flex", alignItems: "center", marginBottom: "10px" }}>
+                                                {Array(4).fill().map((_, index) => (
+                                                    <FaStar key={index} size={24} style={{ marginRight: "5px", color: "yellow" }} />
+                                                ))}
+                                            <FaStarHalf  size={24} style={{ marginRight: "5px", color: "yellow" }} />
+                                            </div>
+                                            <div style={{ width:"10%",display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
+                                                <div style={{ display: "flex", alignItems: "center" }}>
+                                                    <MdLocalFireDepartment size={24} style={{ marginRight: "5px", color: "red" }} />
+                                                    <h1 style={{ fontFamily: "sans", fontSize: "0.9rem", margin: "0", marginRight: "15px" }}>
+                                                    {slide.popularity.toFixed(1)}
+                                                    </h1>
+                                                </div>
+                                                <div style={{ display: "flex", alignItems: "center" }}>
+                                                    <FaHeart size={24} style={{ marginRight: "5px", color: "red" }} />
+                                                    <h1 style={{ fontFamily: "sans", fontSize: "0.9rem", margin: "0" }}>
+                                                    {slide.vote_average.toFixed(1)}
+                                                    </h1>
+                                                </div>
+                                            </div>
+                                        <h1 style={{ fontFamily: "sans", fontSize: "0.9rem", marginBottom: "20px" }}>
+                                            <FaFilm size={24} style={{ marginRight: "5px", color: "blue" }} />
+                                            {slide.genres.map((genre, index) => (
+                                                <span key={index}>
+                                                    {genre.name}
+                                                    {index < slide.genres.length - 1 ? ", " : ""}
+                                                </span>
                                             ))}
-                                        </div>
-                                        <div style={{ height: "50%", width: "50%", position: "absolute", top: "0", right: "0" }}>
-                                            <div style={{ height: "50%", width: "50%", position: "absolute", top: "0", left: "0" }}>
-
-                                                <h1 style={{ textAlign: "center",fontFamily: "sans", fontSize: "0.9rem" ,color:"white"}}>
-                                                    <MdLocalFireDepartment size={24} style={{ marginRight: "5px", color: "red" }} />{slide.popularity}
-                                                </h1>
-                                            </div>
-                                            <div style={{ height: "50%", width: "50%", position: "absolute", top: "0", right: "0" }}>
-                                                <h1 style={{ textAlign: "center", fontFamily: "sans", fontSize: "0.9rem", color: "white" }}>
-                                                    <FaHeart size={24} style={{ marginRight: "5px", color: "red" }} />{slide.vote_average}</h1>
-                                            </div>
-                                            <div style={{ height: "50%", width: "100%", position: "absolute", bottom: "0" }}>
-
-                                                <h1 style={{ textAlign: "center", fontFamily: "sans", fontSize: "0.9rem", color: "white" }}>
-                                                    <FaFilm size={24} style={{ marginRight: "5px", color: "blue" }} />
-                                                    {slide.genres.map((genre, index) => (
-                                                        <span key={index}>
-                                                            {genre.name}
-                                                            {index < slide.genres.length - 1 ? ", " : ""}
-                                                        </span>
-                                                    ))}
-                                                </h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div style={{
-                                        position: "absolute",
-                                        top: "90px",
-                                        height: "70%",
-                                        width: "100%"
-                                    }}>
-                                        <div style={{
-                                            position: "absolute",
-                                            top: "0",
-                                            height: "auto",
-                                            width: "calc(100% - 60px)",
-                                            marginLeft: "30px",
-                                            overflow: "hidden",
-                                            whiteSpace: "normal",
-                                            padding: "10px",
-                                            boxSizing: "border-box"
-                                        }}>
-                                            <h1 style={{
-                                                textAlign: "center",
-                                                fontFamily: "sans-serif",
-                                                fontSize: "1.2rem",
-                                                margin: "0",color:"white",
-                                                overflow: "hidden",
-                                                textOverflow: "ellipsis",
-                                                whiteSpace: "normal",
-                                                wordWrap: "break-word"
-                                            }}>
+                                        </h1>
+                                        <div style={{ width:"40%",maxHeight: "150px", overflow: "hidden", marginBottom: "10px" }}>
+                                            <h2 style={{ fontFamily: "sans-serif", fontSize: "1rem", color: "white", margin: "0" }}>
                                                 {slide.overview}
-                                            </h1>
-                                        </div>
-                                        <div style={{ position: "absolute", bottom: "0", height: "90px", width: "80%", marginLeft: "90px", }}>
-                                            <div style={{ marginBottom: "20px", position: "absolute", left: "0", bottom: "0", height: "30px", width: "30%" }}>
-                                                <Button
-                                                    variant="primary"
-                                                    style={{
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        justifyContent: 'center',
-                                                        height: '50px',
-                                                        width: '190px',
-                                                        backgroundColor: '#007bff', // Bootstrap primary color
-                                                        border: 'none', // Remove default border
-                                                        borderRadius: '5px', // Rounded corners
-                                                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow
-                                                        transition: 'background-color 0.3s, box-shadow 0.3s', // Smooth transition
-                                                        color: 'white', // Text color
-                                                        fontSize: '16px', // Adjust text size
-                                                        padding: '0 20px', // Horizontal padding
-                                                        marginBottom: '20px',
-                                                        fontFamily: 'Arial, sans-serif' // Font for consistency
-                                                    }}
-                                                    onMouseOver={(e) => {
-                                                        e.currentTarget.style.backgroundColor = '#0056b3'; // Darker blue on hover
-                                                        e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.2)'; // More prominent shadow on hover
-                                                    }}
-                                                    onMouseOut={(e) => {
-                                                        e.currentTarget.style.backgroundColor = '#007bff'; // Original blue
-                                                        e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'; // Original shadow
-                                                    }}
-                                                >
-                                                    <FaPlay size={25} style={{ marginRight: '8px' }} />
-                                                    Bookmark
-                                                </Button>
-
-                                            </div>
-                                            <div style={{ marginBottom: "20px", position: "absolute", right: "0", bottom: "0", height: "30px", width: "30%" }}>
-                                                <Button
-                                                    variant="primary"
-                                                    style={{
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        justifyContent: 'center',
-                                                        height: '50px',
-                                                        width: '190px',
-                                                        backgroundColor: '#007bff', // Bootstrap primary color
-                                                        border: 'none', // Remove default border
-                                                        borderRadius: '5px', // Rounded corners
-                                                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)', // Subtle shadow
-                                                        transition: 'background-color 0.3s, box-shadow 0.3s', // Smooth transition
-                                                        color: 'white', // Text color
-                                                        fontSize: '16px', // Adjust text size
-                                                        padding: '0 20px', // Horizontal padding
-                                                        marginBottom: '20px',
-                                                        fontFamily: 'Arial, sans-serif' // Font for consistency
-                                                    }}
-                                                    onMouseOver={(e) => {
-                                                        e.currentTarget.style.backgroundColor = '#0056b3'; // Darker blue on hover
-                                                        e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.2)'; // More prominent shadow on hover
-                                                    }}
-                                                    onMouseOut={(e) => {
-                                                        e.currentTarget.style.backgroundColor = '#007bff'; // Original blue
-                                                        e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)'; // Original shadow
-                                                    }}
-                                                >
-                                                    <FaBookmark size={25} style={{ marginRight: '8px' }} />
-                                                    Bookmark
-                                                </Button>
-
-                                            </div>
+                                            </h2>
                                         </div>
                                     </div>
-
                                 </div>
-                                <div style={{ position: "absolute", bottom: "0", width: "30%", height: "100%", right: "0" }}>
+                                <div style={{
+                                    display: "flex",
+                                    alignItems: "center",
+                                    gap: "10px",
+                                    marginTop: "10px",
+                                    position: "absolute",
+                                    bottom: "190px",
+                                    left: "20px"
+                                }}>
+                                    <Button
+                                        variant="primary"
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            height: '50px',
+                                            width: '190px',
+                                            backgroundColor: '#ff0000', // Red background
+                                            border: 'none',
+                                            borderRadius: '5px',
+                                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                                            transition: 'background-color 0.3s, box-shadow 0.3s',
+                                            color: 'white',
+                                            fontSize: '16px',
+                                            padding: '0 20px',
+                                            fontFamily: 'Arial, sans-serif'
+                                        }}
+                                        onMouseOver={(e) => {
+                                            e.currentTarget.style.backgroundColor = '#cc0000';
+                                            e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.2)';
+                                        }}
+                                        onMouseOut={(e) => {
+                                            e.currentTarget.style.backgroundColor = '#ff0000';
+                                            e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                                        }}
+                                    >
+                                        <FaPlay size={25} style={{ marginRight: '8px' }} />
+                                        Play
+                                    </Button>
+                                    <Button
+                                        className="custom-button"
+                                        style={{
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            height: '50px',
+                                            width: '190px',
+                                            backgroundColor: '#007bff', // Bootstrap primary color
+                                            border: 'none',
+                                            borderRadius: '5px',
+                                            boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                                            transition: 'background-color 0.3s, box-shadow 0.3s',
+                                            color: 'white',
+                                            fontSize: '16px',
+                                            padding: '0 20px',
+                                            fontFamily: 'Arial, sans-serif',
+                                        }}
+                                        onMouseOver={(e) => {
+                                            e.currentTarget.style.backgroundColor = '#0056b3';
+                                            e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.2)';
+                                        }}
+                                        onMouseOut={(e) => {
+                                            e.currentTarget.style.backgroundColor = '#007bff';
+                                            e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                                        }}
+                                    >
+                                        <FaBookmark size={25} style={{ marginRight: '8px' }} />
+                                        Bookmark
+                                    </Button>
                                 </div>
                             </div>
                         </div>

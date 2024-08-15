@@ -3,7 +3,6 @@ import "bootstrap/dist/js/bootstrap";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import TVCards from '../helpers/TVCards';
-import NavBar from '../components/NavBar'
 import MovieCards from '../helpers/MovieCards'
 import Pagination from "../components/Pagination";
 import Filter from "../components/Filter";
@@ -15,7 +14,7 @@ import Search from '../components/Search'
 function DiscoverMedia (){
   return(
     <div className="DiscoverMedia">
-      <NavBar />
+      
       <Routes>
         <Route path="/movies" element={<Movies />} />
         <Route path="/tv_shows" element={<TV_Shows />} />
