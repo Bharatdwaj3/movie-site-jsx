@@ -1,20 +1,23 @@
-import NowPlaying from '../components/Slides/NowPlaying'
-import TopRated from '../components/Slides/TopRated'
-import UpComing from '../components/Slides/UpComing'
-import Discover from './Discover'
-import People from './People'
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/js/bootstrap";
+import TopMedia from "../components/Slides/TopMedia";
+import Banner from "../components/Banner";
+import Footer from '../components/Footer'
 
 function Home() {
+
+ 
+
   return (
     <>
-      <TopRated />
-      <Discover />
-      <UpComing />
-       <People />
-      <NowPlaying />
-       <Discover />
+      <Banner/>
+      <TopMedia/>
+      <Footer/>
+              
     </>
-  );
+  )
 }
+
+
 
 export default Home

@@ -1,58 +1,144 @@
 import axios from "axios"
-import { useState } from 'react'
-import TopMovie from "../../components/Top/TopMovie"
-import TopTV from "../../components/Top/TopTV"
+import { useState,useEffect } from 'react'
+import MovieCards from "../../helpers/MovieCards";
+import TVCards from "../../helpers/TVCards";
+
+
 function TopMedia() {
-  const [topMovieData, setTopMovieData] = useState([]);
-  const [topTVData, setTopTVData] = useState([]);
+  const [trendMovie, settrendMovie] = useState([]);
+  const [trendTV, settrendTV] = useState([]);
 
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
-  const Murl = `https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=${publicKey}`;
+  useEffect(()=>{
+    const Murl = `https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=${publicKey}`;
 
-  axios
-    .get(Murl)
-    .then((response) => {
-      setTopMovieData(response.data.results);
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error("Error fetching trending movies:", error);
-    });
+    axios
+      .get(Murl)
+      .then((response) => {
+        settrendMovie(response.data.results);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching trending movies:", error);
+      });
+  }, [publicKey]);
 
-  const TVurl = `https://api.themoviedb.org/3/trending/tv/day?language=en-US&api_key=${publicKey}`;
+  useEffect(()=>{
+    const TVurl = `https://api.themoviedb.org/3/trending/tv/day?language=en-US&api_key=${publicKey}`;
 
-  axios
-    .get(TVurl)
-    .then((response) => {
-      setTopTVData(response.data.results);
-      console.log(response.data);
-    })
-    .catch((error) => {
-      console.error("Error fetching trending TV shows:", error);
-    });
+    axios
+      .get(TVurl)
+      .then((response) => {
+        settrendTV(response.data.results);
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching trending TV shows:", error);
+      });
+  }, [publicKey]);
 
   return (
     <>
-      <div>
-        <div className="bg-slate-600 h-[1000px] w-full">
-          <div className="h-56 w-full bg-gradient-to-b from-slate-900 ">
-            <h1 className="text-white text-4xl font-serif font-bold text-left ml-2 pt-12 border-b-4 border-white">
-              Top Movies
-            </h1>
-          </div>
-          <div className="h-auto  ml-20 mr-12 w-[1200px] ">
-            <TopMovie datal={topMovieData} />
+      
+       
+      <div className="container-fluid">
+        <div className="row justify-content-center">
+          <div
+            style={{
+              background: "radial-gradient(blue, gray)",
+              height: "960px",
+              width: "1260px",
+              marginBottom: "90px",
+            }}
+          >
+            <div className="pt-5">
+              <div
+                style={{
+                  marginBottom: "90px",
+                  height: "90px",
+                  width: "500px",
+                  borderBottom: "12px solid black",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+              >
+                <h1
+                  style={{
+                    fontFamily: "sans",
+                    textAlign: "center",
+                    paddingTop: "20px",
+                    color: "black",
+                  }}
+                >
+                  Movies :
+                </h1>
+              </div>
+              <div className="container">
+                <div className="row">
+                  <MovieCards
+                    data={trendMovie}
+                    pages="/discover/movies/"
+                    columns={6}
+                    limit={12}
+                    customStyles={{
+                      outerDiv: { height: "250px", marginTop: "2px" },
+                      imageWrapper: { height: "200px" },
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className="bg-slate-600 pt-12  h-[1000px] w-full">
-          <div className="h-56 w-full bg-gradient-to-b from-slate-900 ">
-            <h1 className="text-white text-4xl font-serif font-bold text-left ml-2 pt-12 border-b-4 border-white">
-              Top TV Shows
-            </h1>
-          </div>
-          <div className="h-auto  ml-20 mr-12 w-[1200px]">
-            <TopTV datam={topTVData} />
+      </div>
+      <div className="container-fluid">
+        <div className="row justify-content-center">
+          <div
+            style={{
+              background: "radial-gradient(blue, gray)",
+              height: "960px",
+              width: "1260px",
+              marginBottom: "90px",
+            }}
+          >
+            <div className="pt-5">
+              <div
+                style={{
+                  marginBottom: "90px",
+                  height: "90px",
+                  width: "500px",
+                  borderBottom: "12px solid black",
+                  marginLeft: "auto",
+                  marginRight: "auto",
+                }}
+              >
+                <h1
+                  style={{
+                    fontFamily: "sans",
+                    textAlign: "center",
+                    paddingTop: "20px",
+                    color: "black",
+                  }}
+                >
+                  TV Shows :
+                </h1>
+              </div>
+              <div className="container">
+                <div className="row">
+                  <TVCards
+                    data={trendTV}
+                    page="/discover/tv_shows/"
+                    columns={6}
+                    limit={12}
+                    customStyles={{
+                      outerDiv: { height: "250px", marginTop: "2px" },
+                      imageWrapper: { height: "200px" },
+                    }}
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

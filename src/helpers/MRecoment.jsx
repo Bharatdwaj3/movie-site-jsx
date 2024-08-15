@@ -24,7 +24,7 @@ function MRecoment({ id }) {
 
     return (
         <>
-            <div style={{ backgroundColor: "red", marginLeft: "50px", height: "660px", width: "1260px", marginBottom: "90px" }}>
+            <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "660px", width: "1260px", marginBottom: "90px" }}>
                 <div className="pt-5">
                     <div className="container text-justify">
                             <div className="col-12">

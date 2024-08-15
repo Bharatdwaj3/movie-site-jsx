@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import MRecoment from './MRecoment';
+import MovieCredits from './MovieCredits';
 
 function MDetails() {
     let { id } = useParams();
@@ -27,14 +28,15 @@ function MDetails() {
 
     return (
         <>
+            
             <div>
-                <div style={{ height: "700px", width: "100%" }}>
+                <div style={{ height: "900px", width: "100%", marginBottom: "50px" }}>
                     <div
                         style={{
                             margin: "50px",
-                            height: "700px",
+                            height: "900px",
                             width: "full",
-                            background: "radial-gradient(yellow, orange)",
+                            background: "radial-gradient(blue, gray)",
                             position: "relative",
                         }}
                     >
@@ -53,10 +55,12 @@ function MDetails() {
                                     objectFit: "contain",
                                     borderRadius: "1.5rem",
                                     width: "100%",
-                                    height: "100%",
+                                    height: "300px",
+
                                 }}
                                 alt={MovieDetail.title}
                             />
+
                         </div>
                         <div
                             style={{
@@ -75,8 +79,8 @@ function MDetails() {
                                     position: "absolute",
                                     top: "0",
                                 }}
-                            >  
-                                <h1 style={{ fontFamily: "sans", textAlign: "center" }}>
+                            >
+                                <h1 style={{ fontFamily: "sans", textAlign: "center", borderBottom: '4px solid black', }}>
                                     {MovieDetail.title}
                                 </h1>
                                 <p>
@@ -87,14 +91,20 @@ function MDetails() {
                                     </span>
                                 </p>
 
-                                <p>
-                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}> Revenue: </span>
-                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>$ {MovieDetail.revenue}
-                                    </span>
-                                </p>
+
                                 <p>
                                     <span style={{ fontFamily: "sans", fontWeight: "bolder" }}> Tag Line: </span>
                                     <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> "{MovieDetail.tagline}"
+                                    </span>
+                                </p>
+                                <p>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}> Revenue: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> $ {MovieDetail.revenue}
+                                    </span>
+                                </p>
+                                <p>
+                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}> Budget: </span>
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> $ {MovieDetail.budget} 
                                     </span>
                                 </p>
                                 <p>
@@ -103,19 +113,13 @@ function MDetails() {
                                     </span>
                                 </p>
                                 <p>
-                                    <span style={{ fontFamily: "sans", fontWeight: "bolder" }}> Budget: </span>
-                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> $ {MovieDetail.budget}
-                                    </span>
-                                </p>
-                                
-                                <p>
                                     <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
                                         Popularity: </span>
                                     <span style={{ fontFamily: "serif", fontWeight: "lighter" }}>
                                         {MovieDetail.popularity}
                                     </span>
                                 </p>
-                             
+
                                 <p>
                                     <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
                                         Spoken Languages: </span>
@@ -172,7 +176,7 @@ function MDetails() {
                                         ))}
                                     </span>
                                 </p>
-                               
+
                                 <p>
                                     <span style={{ fontFamily: "sans", fontWeight: "bolder" }}>
                                         Release Date: </span>
@@ -197,24 +201,21 @@ function MDetails() {
                             </div>
 
                         </div>
+                        <div style={{ height: "200px", width: "1256px", marginBottom: "30px", position: "absolute", bottom: "0" }}>
+                            <h3 style={{ fontFamily: "sans", borderBottom: '5px solid black', fontWeight: "bolder", textAlign: "left", marginLeft: "50px" }}>
+                                Description:
+                            </h3>
+                            <span style={{ fontFamily: "serif", fontWeight: "lighter", display: "block", marginTop: "40px", overflow: "scroll", textAlign: "center" }}>
+                                {MovieDetail.overview}
+                            </span>
+                        </div>
                     </div>
 
                 </div>
-                <div style={{ height: "200px", width: "1256px", background: "radial-gradient(yellow, orange)", marginLeft: "50px", marginBottom: "30px" }}>
-                    <p>
-                        <h3 style={{ fontFamily: "sans", fontWeight: "bolder", textAlign: "left", marginLeft: "50px" }}>
-                            Description:
-                        </h3>
-                        <span style={{ fontFamily: "serif", fontWeight: "lighter", display: "block", marginLeft: "170px", marginTop: "40px" }}>
-                            {MovieDetail.overview}
-                        </span>
-                    </p>
-                </div>
+                <MRecoment id={id} />
+                <MovieCredits id={id} />
             </div>
-            <div>
-                <MRecoment id={id}/>
-            </div>
-           
+
         </>
     );
 }
