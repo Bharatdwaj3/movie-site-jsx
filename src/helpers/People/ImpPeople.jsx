@@ -2,9 +2,9 @@ import axios from "axios";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { useEffect, useState } from "react";
-import Pagination from "../components/Pagination";// Ensure this import is present
-import Search from '../components/Search';
-import PeopleCard from "../helpers/PeopleCard";
+import Pagination from "../../components/Pagination";// Ensure this import is present
+import Search from '../../components/Search';
+import PeopleCard from "./PeopleCard";
 
 function ImpPeople() {
     const [totalPages, setTotalPages] = useState(0);

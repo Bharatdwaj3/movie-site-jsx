@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import PeopleCredits from './PeopleCredits';
+import PeopleCredits from '../All/PeopleCredits';
 
 function PeopleDetails() {
   let { id } = useParams();

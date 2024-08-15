@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
 import TVRecoment from './TVRecoment';
-import TVCredits from './TVCredits';
+import TVCredits from '../TVCredits';
 function TV_Show_Details() {
     let { id } = useParams();
     const [showDetails, setshowDetails] = useState(null);
