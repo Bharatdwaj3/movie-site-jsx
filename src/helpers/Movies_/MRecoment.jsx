@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import  axios  from 'axios';
-import MovieCards from './MovieCards';
+import MediaCard from './../MediaCard';
 
 function MRecoment({ id }) {
 
     const [Recomend, setRecomend] = useState([]);
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+
 
 
 
@@ -29,7 +30,7 @@ function MRecoment({ id }) {
                     <div className="container text-justify">
                             <div className="col-12">
                                 <div className="row">
-                                <MovieCards 
+                                <MediaCard 
                                     data={Recomend} 
                                     pages="/discover/movies/" 
                                     columns={6}

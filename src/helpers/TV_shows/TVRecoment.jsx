@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios';
-import TVCards from './TVCards';
-
+import MediaCard from './../MediaCard';
 function TVRecoment({ id }) {
 
     const [Recomment, setRecomment] = useState([]);
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+
 
     useEffect(() => {
         const url = ` https://api.themoviedb.org/3/tv/${id}/recommendations?language=en-US&api_key=${publicKey}`;
@@ -38,7 +38,7 @@ function TVRecoment({ id }) {
                         <div className="col-12">
                             <div className="row">
                                
-                                <TVCards
+                                <MediaCard
                                     data={Recomment}
                                     page="/discover/tv_shows/"
                                     columns={6}
