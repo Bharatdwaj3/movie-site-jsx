@@ -24,7 +24,7 @@ function PeopleCard({ data, page, columns = 4, limit, customStyles }) {
   return (
     <>
       {personToDisplay.map((person) => (
-        <div key={person.id} className={`${columnClass} mb-5`}>
+        <div key={person.id} className={`${columnClass} gy-5 mb-5`}>
           <Link to={`${page}${person.id}`} className="">
             <div
               style={{

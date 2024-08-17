@@ -9,7 +9,6 @@ function AllCard({ data, columns = 4, limit, customStyles }) {
   return (
     <>
       {credToDisplay.map((random) => {
-        // Determine the page path based on the media type
         const dynamicPage = random.media_type === "movie" ? "movies" : "random_shows";
         const pageLink = `/discover/${dynamicPage}/${random.id}`;
 
