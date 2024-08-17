@@ -9,7 +9,7 @@ function AllCard({ data, columns = 4, limit, customStyles }) {
   return (
     <>
       {credToDisplay.map((random) => {
-        const dynamicPage = random.media_type === "movie" ? "movies" : "random_shows";
+        const dynamicPage = random.media_type === "movie" ? "movies" : "tv_shows";
         const pageLink = `/discover/${dynamicPage}/${random.id}`;
 
         return (

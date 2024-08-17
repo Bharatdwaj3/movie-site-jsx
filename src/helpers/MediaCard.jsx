@@ -2,7 +2,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { Link } from "react-router-dom";
 
-function MediaCards({ data, page, columns = 4, limit, customStyles }) {
+function MediaCard({ data, page, columns = 4, limit, customStyles }) {
     const columnClass = `col-${12 / columns}`;
     const itemsToDisplay = (limit === Infinity) ? data : data.slice(0, limit);
 
@@ -21,7 +21,7 @@ function MediaCards({ data, page, columns = 4, limit, customStyles }) {
                                     width: "100%",
                                     backgroundColor: "gray",
                                     position: "relative",
-                                    ...customStyles.outerDiv,
+                                    ...customStyles?.outerDiv,
                                 }}
                             >
                                 <div
@@ -31,7 +31,7 @@ function MediaCards({ data, page, columns = 4, limit, customStyles }) {
                                         width: "100%",
                                         position: "absolute",
                                         top: "0",
-                                        ...customStyles.imageWrapper,
+                                        ...customStyles?.imageWrapper,
                                     }}
                                 >
                                     <img
@@ -39,9 +39,9 @@ function MediaCards({ data, page, columns = 4, limit, customStyles }) {
                                         style={{
                                             height: "100%",
                                             width: "100%",
-                                            ...customStyles.image,
+                                            ...customStyles?.image,
                                         }}
-                                        alt=""
+                                        alt={title}
                                     />
                                     <div
                                         style={{
@@ -51,64 +51,71 @@ function MediaCards({ data, page, columns = 4, limit, customStyles }) {
                                             width: "100%",
                                             position: "absolute",
                                             top: "0",
-                                            ...customStyles.overlay,
+                                            ...customStyles?.overlay,
                                         }}
                                     >
-                                        <h1
-                                            className="badge bg-warning"
-                                            style={{
-                                                fontSize: "0.75rem",
-                                                color: "black",
-                                                fontFamily: "sans",
-                                                backdropFilter: "blur(2px)",
-                                                marginTop: "0",
-                                                position: "absolute",
-                                                top: "19",
-                                                right: "0",
-                                                marginRight: "12",
-                                                ...customStyles.languageBadge,
-                                            }}
-                                        >
-                                            {item.original_language.toUpperCase()}
-                                        </h1>
+                                        {item.original_language && (
+                                            <h1
+                                                className="badge bg-warning"
+                                                style={{
+                                                    fontSize: "0.75rem",
+                                                    color: "black",
+                                                    fontFamily: "sans",
+                                                    backdropFilter: "blur(2px)",
+                                                    marginTop: "0",
+                                                    position: "absolute",
+                                                    top: "19px",
+                                                    right: "0",
+                                                    marginRight: "12px",
+                                                    ...customStyles?.languageBadge,
+                                                }}
+                                            >
+                                                {item.original_language.toUpperCase()}
+                                            </h1>
+                                        )}
 
-                                        <h1
-                                            className="badge bg-warning"
-                                            style={{
-                                                fontSize: "0.75rem",
-                                                color: "black",
-                                                fontFamily: "mono",
-                                                backdropFilter: "blur(2px)",
-                                                marginTop: "24px",
-                                                position: "absolute",
-                                                bottom: "0",
-                                                left: "0",
-                                                ...customStyles.dateBadge,
-                                            }}
-                                        >
-                                            {new Date(releaseDate).toLocaleDateString("en-GB", {
-                                                day: "numeric",
-                                                month: "long",
-                                                year: "numeric",
-                                            })}
-                                        </h1>
-                                        <h1
-                                            className="badge bg-warning"
-                                            style={{
-                                                fontSize: "0.75rem",
-                                                color: "black",
-                                                fontFamily: "mono",
-                                                backdropFilter: "blur(2px)",
-                                                marginTop: "24px",
-                                                position: "absolute",
-                                                bottom: "0",
-                                                right: "0",
-                                                marginRight: "12",
-                                                ...customStyles.ratingBadge,
-                                            }}
-                                        >
-                                            {item.vote_average.toFixed(1)}
-                                        </h1>
+                                        {releaseDate && (
+                                            <h1
+                                                className="badge bg-warning"
+                                                style={{
+                                                    fontSize: "0.75rem",
+                                                    color: "black",
+                                                    fontFamily: "mono",
+                                                    backdropFilter: "blur(2px)",
+                                                    marginTop: "24px",
+                                                    position: "absolute",
+                                                    bottom: "0",
+                                                    left: "0",
+                                                    ...customStyles?.dateBadge,
+                                                }}
+                                            >
+                                                {new Date(releaseDate).toLocaleDateString("en-GB", {
+                                                    day: "numeric",
+                                                    month: "long",
+                                                    year: "numeric",
+                                                })}
+                                            </h1>
+                                        )}
+
+                                        {item.vote_average && (
+                                            <h1
+                                                className="badge bg-warning"
+                                                style={{
+                                                    fontSize: "0.75rem",
+                                                    color: "black",
+                                                    fontFamily: "mono",
+                                                    backdropFilter: "blur(2px)",
+                                                    marginTop: "24px",
+                                                    position: "absolute",
+                                                    bottom: "0",
+                                                    right: "0",
+                                                    marginRight: "12px",
+                                                    ...customStyles?.ratingBadge,
+                                                }}
+                                            >
+                                                {item.vote_average.toFixed(1)}
+                                            </h1>
+                                        )}
                                     </div>
                                 </div>
                                 <div
@@ -120,7 +127,7 @@ function MediaCards({ data, page, columns = 4, limit, customStyles }) {
                                         position: "absolute",
                                         bottom: "0",
                                         opacity: "0.5",
-                                        ...customStyles.titleWrapper,
+                                        ...customStyles?.titleWrapper,
                                     }}
                                 >
                                     <h1
@@ -131,7 +138,7 @@ function MediaCards({ data, page, columns = 4, limit, customStyles }) {
                                             backdropFilter: "blur(2px)",
                                             marginTop: "12px",
                                             textAlign: "center",
-                                            ...customStyles.title,
+                                            ...customStyles?.title,
                                         }}
                                     >
                                         {title}
@@ -146,4 +153,4 @@ function MediaCards({ data, page, columns = 4, limit, customStyles }) {
     );
 }
 
-export default MediaCards;
+export default MediaCard;

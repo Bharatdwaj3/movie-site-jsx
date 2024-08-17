@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import AllCard from './AllCard'
+import MediaCard from '../MediaCard';
 
 function PeopleCredits({id}) {
   const [crew, setCrew] = useState([]);
@@ -33,14 +33,14 @@ function PeopleCredits({id}) {
             }}
           >
             <h1 style={{ fontFamily: "sans", textAlign: "center", paddingTop: "20px", color: "black" }}>
-              Cast :
+              Casted as :
             </h1>
           </div>
           <div className="container text-justify">
             <div className="col-12">
               <div className="row">
 
-                <AllCard
+                <MediaCard
                   data={credits}
                   page="/discover/"
                   columns={6}
@@ -65,14 +65,14 @@ function PeopleCredits({id}) {
             }}
           >
             <h1 style={{ fontFamily: "sans", textAlign: "center", paddingTop: "20px", color: "black" }}>
-              Crew :
+              Crew in :
             </h1>
           </div>
           <div className="container text-justify">
             <div className="col-12">
               <div className="row">
 
-                <AllCard
+                <MediaCard
                   data={crew}
                   page="/discover/"
                   columns={6}
