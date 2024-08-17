@@ -11,7 +11,7 @@ function MDetails() {
 
     useEffect(() => {
         const url = `https://api.themoviedb.org/3/movie/${id}?language=en-US&api_key=${publicKey}`;
-
+console.log(url);
         axios
             .get(url)
             .then((response) => {
@@ -20,7 +20,7 @@ function MDetails() {
             .catch((error) => {
                 console.error("Error fetching movie details:", error);
             });
-    }, [id, publicKey]);
+    }, [id,publicKey]);
 
     if (!MovieDetail.title) {
         return <div>Loading...</div>;

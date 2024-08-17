@@ -5,10 +5,9 @@ import { useState, useEffect } from "react";
 
 import Pagination from "../components/Pagination";
 import Filter from "../components/Filter";
-import MediaCard from './../helpers/MediaCard';
 import { Routes, Route } from 'react-router-dom';
 import Search from '../components/Search'
-import AllCard from "../helpers/All/AllCard";
+import MediaCard from "../helpers/MediaCard";
 
 
 function DiscoverMedia (){
@@ -60,9 +59,9 @@ const Movies=()=> {
             <Filter setGenre={setGenre}/>
             <div className="col-9">
               <div className="row">
-                <AllCard
+                <MediaCard
                   data={BrowseMovieData}
-                  pages="/discover/movies"
+                  page="/discover/movies/"
                   columns={4}
                   limit={Infinity}
                   customStyles={{}}
@@ -128,9 +127,9 @@ const TV_Shows=()=> {
             <Filter setGenre={setGenre} />
             <div className="col-9">
               <div className="row">
-              <AllCard
+              <MediaCard
                   data={BrowseTVData}
-                  pages="/discover/"
+                  page="/discover/tv_shows/"
                   columns={4}
                   limit={Infinity}
                   customStyles={{}}

@@ -10,14 +10,14 @@ import NavBar from './components/NavBar';
 function App() {
   return (
     <Router>
-      <NavBar/>
+      <NavBar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/discover/movies/:id" element={<MDetails />} />
         <Route path="/discover/tv_shows/:id" element={<TV_Show_Details />} />
         <Route path="/discover/*" element={<DiscoverMedia />} />
         <Route path="/imppeople" element={<ImpPeople />} />
-        <Route path="/imppeople/:id" element={<PeopleDetails/>}/>
+        <Route path="/imppeople/:id" element={<PeopleDetails />} />
       </Routes>
     </Router>
   );
