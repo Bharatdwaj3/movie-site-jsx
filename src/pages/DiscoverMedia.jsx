@@ -8,6 +8,7 @@ import Filter from "../components/Filter";
 import MediaCard from './../helpers/MediaCard';
 import { Routes, Route } from 'react-router-dom';
 import Search from '../components/Search'
+import AllCard from "../helpers/All/AllCard";
 
 
 function DiscoverMedia (){
@@ -59,9 +60,9 @@ const Movies=()=> {
             <Filter setGenre={setGenre}/>
             <div className="col-9">
               <div className="row">
-                <MediaCard
+                <AllCard
                   data={BrowseMovieData}
-                  pages="/discover/movies/"
+                  pages="/discover/movies"
                   columns={4}
                   limit={Infinity}
                   customStyles={{}}
@@ -127,9 +128,9 @@ const TV_Shows=()=> {
             <Filter setGenre={setGenre} />
             <div className="col-9">
               <div className="row">
-              <MediaCard
+              <AllCard
                   data={BrowseTVData}
-                  page="/discover/tv_shows/"
+                  pages="/discover/"
                   columns={4}
                   limit={Infinity}
                   customStyles={{}}

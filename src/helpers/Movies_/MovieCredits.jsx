@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';;
-import MediaCard from './../MediaCard';
+import MediaCard from '../MediaCard';
+import AllCard from '../All/AllCard';
 
 function MovieCredits({id}) {
 
@@ -42,7 +43,7 @@ function MovieCredits({id}) {
                       <div className="col-12">
                           <div className="row">
 
-                              <MediaCard
+                              <AllCard
                                   data={credits}
                                   page="/imppeople/"
                                   columns={6}
@@ -74,7 +75,7 @@ function MovieCredits({id}) {
                       <div className="col-12">
                           <div className="row">
 
-                              <MediaCard
+                              <AllCard
                                   data={crew}
                                   page="/imppeople/"
                                   columns={6}

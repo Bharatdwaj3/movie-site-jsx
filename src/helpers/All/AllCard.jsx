@@ -68,7 +68,7 @@ function AllCard({ data, columns = 4, limit, customStyles }) {
                         marginRight: "12", ...customStyles.languageBadge,
                       }}
                     >
-                      {random.original_language.toUpperCase()}
+                       {random.orignal_language && (random.original_language.toUpperCase())}
                     </h1>
                     <h1
                       className="badge bg-primary"
@@ -119,7 +119,7 @@ function AllCard({ data, columns = 4, limit, customStyles }) {
                         marginRight: "12", ...customStyles.ratingBadge,
                       }}
                     >
-                      {random.vote_average.toFixed(1)}
+                      {random.vote_average && (random.vote_average.toFixed(1))}
                     </h1>
                    
                   </div>

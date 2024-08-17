@@ -1,6 +1,6 @@
 import axios from "axios"
 import { useState,useEffect } from 'react'
-import MediaCard from '../helpers/MediaCard';
+import AllCard from '../helpers/All/AllCard';
 
 function TopMedia() {
   const [trendMovie, settrendMovie] = useState([]);
@@ -75,9 +75,9 @@ function TopMedia() {
               </div>
               <div className="container">
                 <div className="row">
-                  <MediaCard
+                  <AllCard
                     data={trendMovie}
-                    pages="/discover/movies/"
+                    pages="/discover/"
                     columns={6}
                     limit={12}
                     customStyles={{
@@ -125,7 +125,7 @@ function TopMedia() {
               </div>
               <div className="container">
                 <div className="row">
-                  <MediaCard
+                  <AllCard
                     data={trendTV}
                     page="/discover/tv_shows/"
                     columns={6}
