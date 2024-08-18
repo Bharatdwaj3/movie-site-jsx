@@ -73,7 +73,7 @@ function PeopleCard({ data, page, columns = 4, limit, customStyles }) {
                       top: "0",
                       left: "0",
                       fontFamily: "sans",
-                      marginTop: "12",
+                      marginTop: "12px",
                         ...customStyles.deptBadge,
                     }}
                   >
@@ -87,7 +87,7 @@ function PeopleCard({ data, page, columns = 4, limit, customStyles }) {
                       top: "0",
                       right: "0",
                       fontFamily: "sans",
-                      marginTop: "12",
+                      marginTop: "12px",
                         ...customStyles.genderBadge
                     }}
                   >

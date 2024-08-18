@@ -66,7 +66,6 @@ function MediaCard({ data, page, columns = 4, limit, customStyles }) {
                                                     position: "absolute",
                                                     top: "19px",
                                                     right: "0",
-                                                    marginRight: "12px",
                                                     ...customStyles?.languageBadge,
                                                 }}
                                             >
@@ -86,6 +85,7 @@ function MediaCard({ data, page, columns = 4, limit, customStyles }) {
                                                     position: "absolute",
                                                     bottom: "0",
                                                     left: "0",
+                                                    marginBottom: "12px",
                                                     ...customStyles?.dateBadge,
                                                 }}
                                             >
@@ -109,7 +109,7 @@ function MediaCard({ data, page, columns = 4, limit, customStyles }) {
                                                     position: "absolute",
                                                     bottom: "0",
                                                     right: "0",
-                                                    marginRight: "12px",
+                                                    marginBottom:"12px",
                                                     ...customStyles?.ratingBadge,
                                                 }}
                                             >
