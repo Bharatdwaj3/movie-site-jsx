@@ -22,7 +22,7 @@ function PeopleCredits({id}) {
 
   return (
     <>
-      <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "960px", width: "1430px", marginBottom: "90px" }}>
+      <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "960px", width: "93.5%", marginBottom: "90px" }}>
         <div className="pt-5">
           <div
             style={{
@@ -54,7 +54,7 @@ function PeopleCredits({id}) {
           </div>
         </div>
       </div>
-      <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "960px", width: "1430px", marginBottom: "90px" }}>
+      <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "960px", width: "93.5%", marginBottom: "90px" }}>
         <div className="pt-5">
           <div
             style={{

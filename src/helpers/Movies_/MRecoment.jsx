@@ -12,7 +12,7 @@ function MRecoment({ id }) {
 
     useEffect(() => {
         const url = `https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&api_key=${publicKey}`;
-
+//console.log(url)
         axios
             .get(url)
             .then((response) => {
@@ -25,8 +25,20 @@ function MRecoment({ id }) {
 
     return (
         <>
-            <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "660px", width: "1260px", marginBottom: "90px" }}>
+            <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "960px", width: "93.5%", marginBottom: "90px" }}>
                 <div className="pt-5">
+                      <div
+            style={{
+              marginBottom: "90px",
+              height: "90px",
+              width: "500px", borderBottom: "12px solid black",
+
+            }}
+          >
+            <h1 style={{ fontFamily: "sans", textAlign: "center", paddingTop: "20px", color: "black" }}>
+              Recommendation :
+            </h1>
+          </div>
                     <div className="container text-justify">
                             <div className="col-12">
                                 <div className="row">

@@ -24,7 +24,7 @@ function MovieCredits({id}) {
 
   return (
     <>
-          <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "960px", width: "1260px", marginBottom: "90px" }}>
+          <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "960px", width: "93.5%", marginBottom: "90px" }}>
               <div className="pt-5">
                   <div
                       style={{
@@ -56,7 +56,7 @@ function MovieCredits({id}) {
                   </div>
               </div>
           </div>
-          <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "960px", width: "1260px", marginBottom: "90px" }}>
+          <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "960px", width: "93.5%", marginBottom: "90px" }}>
               <div className="pt-5">
                   <div
                       style={{

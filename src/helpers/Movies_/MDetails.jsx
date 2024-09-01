@@ -29,7 +29,7 @@ console.log(url);
     return (
         <>
             <div>
-                <div style={{ height: "900px", width: "100%", marginBottom: "50px" }}>
+                <div style={{ height: "900px", width: "93.4%", marginBottom: "50px" }}>
                     <div
                         style={{
                             margin: "50px",
@@ -71,7 +71,6 @@ console.log(url);
                             <div
                                 style={{
                                     height: "50%",
-                                    marginRight: "35px",
                                     width: "890px",
                                     position: "absolute",
                                     top: "0",
