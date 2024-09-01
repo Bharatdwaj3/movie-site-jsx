@@ -2,20 +2,22 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { Link } from "react-router-dom";
-import Image from '../assets/NOPhoto.jpg'
-function MediaCard({ data, page, columns = 4, limit, customStyles }) {
+import Image from '../assets/NOPhoto.jpg';
+
+function AllCard({ data, columns = 4, limit, customStyles }) {
     const columnClass = `col-${12 / columns}`;
-    const itemsToDisplay = (limit === Infinity) ? data : data.slice(0, limit);
+    const itemsToDisplay = limit === Infinity ? data : data.slice(0, limit);
 
     return (
         <>
             {itemsToDisplay.map((item) => {
                 const title = item.title || item.name;
                 const releaseDate = item.release_date || item.first_air_date;
+                const mediaUrl = item.media_type === 'movie' ? `/discover/movies/${item.id}` : `/discover/tv_shows/${item.id}`;
 
                 return (
                     <div key={item.id} className={`${columnClass} mb-5`}>
-                        <Link to={`${page}${item.id}`} className="">
+                        <Link to={mediaUrl} className="">
                             <div
                                 style={{
                                     height: "350px",
@@ -35,15 +37,14 @@ function MediaCard({ data, page, columns = 4, limit, customStyles }) {
                                         ...customStyles?.imageWrapper,
                                     }}
                                 >
-                                    < img
+                                    <img
                                         style={{
                                             height: "100%",
                                             width: "100%",
                                             ...customStyles?.image,
                                         }}
-                                          src={item.poster_path?`https://image.tmdb.org/t/p/w500${item.poster_path}`:Image}
-                                        alt={item.poster_path ? item.title :  "NO  Image!!"}
-                                           
+                                        src={item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : Image}
+                                        alt={item.poster_path ? title : "No Image Available"}
                                     />
                                     <div
                                         style={{
@@ -111,7 +112,7 @@ function MediaCard({ data, page, columns = 4, limit, customStyles }) {
                                                     position: "absolute",
                                                     bottom: "0",
                                                     right: "0",
-                                                    marginBottom:"12px",
+                                                    marginBottom: "12px",
                                                     ...customStyles?.ratingBadge,
                                                 }}
                                             >
@@ -155,4 +156,4 @@ function MediaCard({ data, page, columns = 4, limit, customStyles }) {
     );
 }
 
-export default MediaCard;
+export default AllCard;

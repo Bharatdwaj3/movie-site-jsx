@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import MediaCard from '../MediaCard';
+import AllCard from '../AllCard';
 
 function PeopleCredits({id}) {
   const [crew, setCrew] = useState([]);
@@ -45,7 +45,7 @@ useEffect(() => {
             <div className="col-12">
               <div className="row">
 
-                <MediaCard
+                <AllCard
                   data={credits}
                   page="/discover/"
                   columns={6}
@@ -77,7 +77,7 @@ useEffect(() => {
             <div className="col-12">
               <div className="row">
 
-                <MediaCard
+                <AllCard
                   data={crew}
                   page="/discover/"
                   columns={6}

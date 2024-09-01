@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import { Link } from "react-router-dom";
 
+import Image from '../../assets/NOPhoto.jpg'
 function PeopleCard({ data, page, columns = 4, limit, customStyles }) {
   const columnClass = `col-${12 / columns}`;
   const personToDisplay = limit === Infinity ? data : data.slice(0, limit);
@@ -54,8 +55,8 @@ function PeopleCard({ data, page, columns = 4, limit, customStyles }) {
                     objectFit: "cover",
                     ...customStyles.image,
                   }}
-                  src={`https://image.tmdb.org/t/p/w500/${person.profile_path}`}
-                  alt="Not Found Image"
+                  src={person.profile_path ? `https://image.tmdb.org/t/p/w500/${person.profile_path}` : Image}
+                  alt={person.profile_path ? person.name : "No Image Available"}
                 />
                 <div
                   style={{
