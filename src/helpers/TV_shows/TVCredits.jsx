@@ -8,17 +8,20 @@ function TVCredits({ id }) {
     const [crew, setCrew] = useState([]);
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
+useEffect(() => {
+    async function fetchTVCredits() {
+        try {
+            const url = `https://api.themoviedb.org/3/tv/${id}/credits?language=en-US&api_key=${publicKey}`;
+            const response = await axios.get(url);
+            setCredits(response.data.cast || []);
+            setCrew(response.data.crew || []); 
+        } catch (error) {
+            console.error('Error fetching TV show credits:', error);
+        }
+    }
 
-    useEffect(() => {
-        const url = `https://api.themoviedb.org/3/tv/${id}/credits?language=en-US&api_key=${publicKey}`;
-
-        axios.get(url)
-            .then((response) => {
-                setCredits(response.data.cast || []);
-                setCrew(response.data.crew || []); 
-            })
-            .catch((error) => console.error('Error fetching credits:', error));
-    }, [id, publicKey]);
+    fetchTVCredits();
+}, [id, publicKey]);
 
     return (
         <>

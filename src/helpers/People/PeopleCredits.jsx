@@ -9,16 +9,20 @@ function PeopleCredits({id}) {
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
 
-  useEffect(() => {
-    const url = `https://api.themoviedb.org/3/person/${id}/combined_credits?language=en-US&api_key=${publicKey}`;
+useEffect(() => {
+    async function fetchCredits() {
+        try {
+            const url = `https://api.themoviedb.org/3/person/${id}/combined_credits?language=en-US&api_key=${publicKey}`;
+            const response = await axios.get(url);
+            setCredits(response.data.cast || []);
+            setCrew(response.data.crew || []);
+        } catch (error) {
+            console.error('Error fetching credits:', error);
+        }
+    }
 
-    axios.get(url)
-      .then((response) => {
-        setCredits(response.data.cast || []);
-        setCrew(response.data.crew || []);
-      })
-      .catch((error) => console.error('Error fetching credits:', error));
-  }, [id, publicKey]);
+    fetchCredits();
+}, [id, publicKey]); 
 
 
   return (

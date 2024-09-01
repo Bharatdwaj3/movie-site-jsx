@@ -8,22 +8,19 @@ function MRecoment({ id }) {
     const [Recomend, setRecomend] = useState([]);
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
+   useEffect(() => {
+    async function recommendations() {
+        try {
+            const url = `https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&api_key=${publicKey}`;
+            const response = await axios.get(url);
+            setRecomend(response.data.results);
+        } catch (error) {
+            console.error("Error fetching movie recommendations:", error);
+        }
+    }
 
-
-
-    useEffect(() => {
-        const url = `https://api.themoviedb.org/3/movie/${id}/recommendations?language=en-US&api_key=${publicKey}`;
-//console.log(url)
-        axios
-            .get(url)
-            .then((response) => {
-                setRecomend(response.data.results);
-            })
-            .catch((error) => {
-                console.error("Error fetching movie details:", error);
-            });
-    }, [id,publicKey]);
-
+    recommendations();
+}, [id, publicKey]);
     return (
         <>
             <div style={{ background: "radial-gradient(blue, gray)", marginLeft: "50px", height: "960px", width: "93.5%", marginBottom: "90px" }}>

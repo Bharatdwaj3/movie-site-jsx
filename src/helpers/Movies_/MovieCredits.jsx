@@ -12,16 +12,20 @@ function MovieCredits({id}) {
 
 
 
-    useEffect(() => {
-        const url = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=${publicKey}`;
+ useEffect(() => {
+    async function loadCred() {
+        try {
+            const url = `https://api.themoviedb.org/3/movie/${id}/credits?language=en-US&api_key=${publicKey}`;
+            const response = await axios.get(url);
+            setCredits(response.data.cast || []);
+            setCrew(response.data.crew || []);
+        } catch (error) {
+            console.error('Error fetching credits:', error);
+        }
+    }
 
-        axios.get(url)
-            .then((response) => {
-                setCredits(response.data.cast || []);
-                setCrew(response.data.crew || []);
-            })
-            .catch((error) => console.error('Error fetching credits:', error));
-    }, [id, publicKey]);
+    loadCred();
+}, [id, publicKey]);
 
   return (
     <>

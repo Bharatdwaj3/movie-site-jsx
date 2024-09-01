@@ -11,19 +11,20 @@ function TVRecoment({id }) {
 
 
 
-    useEffect(() => {
-        const url = `https://api.themoviedb.org/3/tv/${id}/recommendations?language=en-US&page=1&api_key=${publicKey}`;
-        console.log(id)
-1
-        axios
-            .get(url)
-            .then((response) => {
-                setRecomendTV(response.data.results);
-            })
-            .catch((error) => {
-                console.error("Error fetching movie details:", error);
-            });
-    }, [id,publicKey]);
+  useEffect(() => {
+    async function fetchTVRecommendations() {
+        try {
+            const url = `https://api.themoviedb.org/3/tv/${id}/recommendations?language=en-US&page=1&api_key=${publicKey}`;
+            console.log(id);
+            const response = await axios.get(url);
+            setRecomendTV(response.data.results);
+        } catch (error) {
+            console.error("Error fetching TV show recommendations:", error);
+        }
+    }
+
+    fetchTVRecommendations();
+}, [id, publicKey]);
 
     return (
         <>

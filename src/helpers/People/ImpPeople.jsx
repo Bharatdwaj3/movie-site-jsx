@@ -14,24 +14,29 @@ function ImpPeople() {
     const [ImPeople, setImPeople] = useState([]);
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
-    useEffect(() => {
-        let url;
-        if (search) {
-            url = `https://api.themoviedb.org/3/search/person?query=${search}&include_adult=false&language=en-US&page=${pageNumber}&api_key=${publicKey}`;
-        } else {
-            url = `https://api.themoviedb.org/3/person/popular?language=en-US&page=${pageNumber}&api_key=${publicKey}`;
-        }
 
-        axios
-            .get(url)
-            .then((response) => {
-                setImPeople(response.data.results);
-                setTotalPages(response.data.total_pages);
-            })
-            .catch((error) => {
-                console.error("Error fetching people data:", error);
-            });
-    }, [pageNumber, search, publicKey]);
+
+useEffect(() => {
+    async function searchOrDefault() {
+        try {
+            let url;
+            if (search) {
+                url = `https://api.themoviedb.org/3/search/person?query=${search}&include_adult=false&language=en-US&page=${pageNumber}&api_key=${publicKey}`;
+            } else {
+                url = `https://api.themoviedb.org/3/person/popular?language=en-US&page=${pageNumber}&api_key=${publicKey}`;
+            }
+
+            const response = await axios.get(url);
+            setImPeople(response.data.results);
+            setTotalPages(response.data.total_pages);
+        } catch (error) {
+            console.error("Error fetching people data:", error);
+        }
+    }
+
+    searchOrDefault();
+}, [pageNumber, search, publicKey]);
+
 
     return (
         <>

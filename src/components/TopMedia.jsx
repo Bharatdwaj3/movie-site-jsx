@@ -9,33 +9,35 @@ function TopMedia() {
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
 
-  useEffect(()=>{
-    const Murl = `https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=${publicKey}`;
+useEffect(() => {
+    async function fetchTrendingMovies() {
+        try {
+            const Murl = `https://api.themoviedb.org/3/trending/movie/day?language=en-US&api_key=${publicKey}`;
+            const response = await axios.get(Murl);
+            settrendMovie(response.data.results);
+            console.log(response.data);
+        } catch (error) {
+            console.error("Error fetching trending movies:", error);
+        }
+    }
 
-    axios
-      .get(Murl)
-      .then((response) => {
-        settrendMovie(response.data.results);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching trending movies:", error);
-      });
-  }, [publicKey]);
+    fetchTrendingMovies();
+}, [publicKey]);
 
-  useEffect(()=>{
-    const TVurl = `https://api.themoviedb.org/3/trending/tv/day?language=en-US&api_key=${publicKey}`;
+useEffect(() => {
+    async function fetchTrendingTVShows() {
+        try {
+            const TVurl = `https://api.themoviedb.org/3/trending/tv/day?language=en-US&api_key=${publicKey}`;
+            const response = await axios.get(TVurl);
+            settrendTV(response.data.results);
+            console.log(response.data);
+        } catch (error) {
+            console.error("Error fetching trending TV shows:", error);
+        }
+    }
 
-    axios
-      .get(TVurl)
-      .then((response) => {
-        settrendTV(response.data.results);
-        console.log(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching trending TV shows:", error);
-      });
-  }, [publicKey]);
+    fetchTrendingTVShows();
+}, [publicKey]);
 
   return (
     <>

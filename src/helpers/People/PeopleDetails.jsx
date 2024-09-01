@@ -9,19 +9,19 @@ function PeopleDetails() {
   const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
 
-  useEffect(() => {
-    const url = `https://api.themoviedb.org/3/person/${id}?api_key=${publicKey}`;
+useEffect(() => {
+    async function fetchPersonDetails() {
+        try {
+            const url = `https://api.themoviedb.org/3/person/${id}?api_key=${publicKey}`;
+            const response = await axios.get(url);
+            setImPerson(response.data);
+        } catch (error) {
+            console.error("Error fetching person details:", error);
+        }
+    }
 
-    axios
-      .get(url)
-      .then((response) => {
-        setImPerson(response.data);
-      })
-      .catch((error) => {
-        console.error("Error fetching person People details:", error);
-      });
-  }, [id, publicKey]);
-
+    fetchPersonDetails();
+}, [id, publicKey]); 
   if (!ImPerson) {
     return <div>Loading...</div>; 
   }

@@ -11,18 +11,20 @@ function TV_Show_Details() {
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
 
 
-    useEffect(() => {
-        const url = `https://api.themoviedb.org/3/tv/${id}?language=en-US&api_key=${publicKey}`;
-        console.log(url)
-        axios
-            .get(url)
-            .then((response) => {
-                setshowDetails(response.data);
-            })
-            .catch((error) => {
-                console.error("Error fetching movie details:", error);
-            });
-    }, [id, publicKey]);
+useEffect(() => {
+    async function fetchTVShowDetails() {
+        try {
+            const url = `https://api.themoviedb.org/3/tv/${id}?language=en-US&api_key=${publicKey}`;
+            console.log(url);
+            const response = await axios.get(url);
+            setshowDetails(response.data);
+        } catch (error) {
+            console.error("Error fetching TV show details:", error);
+        }
+    }
+
+    fetchTVShowDetails();
+}, [id, publicKey]);
 
     if (!showDetails) {
         return <div>Loading...</div>;
