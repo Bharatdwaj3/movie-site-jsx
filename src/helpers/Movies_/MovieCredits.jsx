@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';;
+import axios from 'axios';
 import PeopleCard from '../People/PeopleCard';
 
+// eslint-disable-next-line react/prop-types
 function MovieCredits({id}) {
 
     const [credits, setCredits] = useState([]);

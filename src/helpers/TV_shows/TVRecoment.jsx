@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import  axios  from 'axios';
-import MediaCard from './../MediaCard';
+import MediaCard  from "../MediaCard"
 
-function TVRecoment({ id }) {
+// eslint-disable-next-line react/prop-types
+function TVRecoment({id }) {
 
     const [RecomendTV, setRecomendTV] = useState([]);
     const publicKey = import.meta.env.VITE_PUBLIC_KEY;
@@ -12,6 +13,7 @@ function TVRecoment({ id }) {
 
     useEffect(() => {
         const url = `https://api.themoviedb.org/3/tv/${id}/recommendations?language=en-US&page=1'&api_key=${publicKey}`;
+        console.log(id)
 1
         axios
             .get(url)
@@ -42,7 +44,7 @@ function TVRecoment({ id }) {
                     <div className="container text-justify">
                             <div className="col-12">
                                 <div className="row">
-                                <MediaCard 
+                                <MediaCard
                                     data={RecomendTV} 
                                     pages="/discover/tv_shows/" 
                                     columns={6}

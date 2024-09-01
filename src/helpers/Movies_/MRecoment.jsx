@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import  axios  from 'axios';
 import MediaCard from './../MediaCard';
 
+// eslint-disable-next-line react/prop-types
 function MRecoment({ id }) {
 
     const [Recomend, setRecomend] = useState([]);

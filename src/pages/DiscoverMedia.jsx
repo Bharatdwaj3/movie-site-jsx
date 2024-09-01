@@ -28,10 +28,8 @@ const Movies=()=> {
   const [totalPages, setTotalPages] = useState(0);
   const [genre,setGenre]=useState([])
   const [search, setSearch] = useState("")
-  //const publicKey = import.meta.env.VITE_PUBLIC_KEY;
+  
 const publicKey = import.meta.env.VITE_PUBLIC_KEY;
-
-console.log(import.meta.env.VITE_PUBLIC_KEY);
 
   useEffect(() => {
    let url;

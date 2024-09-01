@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
@@ -93,7 +94,7 @@ function TV_Show_Details() {
                               
                                 <p>
                                     <span style={{ fontFamily: "sans", fontWeight: "bolder" }}> Tag Line: </span>
-                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> "{showDetails.tagline}"
+                                    <span style={{ fontFamily: "serif", fontWeight: "lighter" }}> ' {showDetails.tagline} '
                                     </span>
                                 </p>
                               <p>

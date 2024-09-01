@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import '../styles/style.css';
 
 function FilterBtn({ name, index, item, setGenre }) {

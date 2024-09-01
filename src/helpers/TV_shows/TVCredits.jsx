@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import PeopleCard from '../People/PeopleCard';
 
+// eslint-disable-next-line react/prop-types
 function TVCredits({ id }) {
     const [credits, setCredits] = useState([]);
     const [crew, setCrew] = useState([]);
