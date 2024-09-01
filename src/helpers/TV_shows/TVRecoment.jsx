@@ -12,7 +12,7 @@ function TVRecoment({id }) {
 
 
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/tv/${id}/recommendations?language=en-US&page=1'&api_key=${publicKey}`;
+        const url = `https://api.themoviedb.org/3/tv/${id}/recommendations?language=en-US&page=1&api_key=${publicKey}`;
         console.log(id)
 1
         axios
@@ -46,7 +46,8 @@ function TVRecoment({id }) {
                                 <div className="row">
                                 <MediaCard
                                     data={RecomendTV} 
-                                    pages="/discover/tv_shows/" 
+                                    
+                  page="/discover/tv_shows/"
                                     columns={6}
                                     limit={12}
                                     customStyles={{

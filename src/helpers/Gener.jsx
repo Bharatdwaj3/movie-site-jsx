@@ -57,7 +57,7 @@ function Gener({ setGenre }) {
                 name="genre"
                 index={genre.id}
                 item={genre.name}
-                setGenre={setGenre} // Pass setGenre to update selected genre
+                setGenre={setGenre} 
               />
             ))}
           </div>

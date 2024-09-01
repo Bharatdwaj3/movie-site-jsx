@@ -45,7 +45,7 @@ function MRecoment({ id }) {
                                 <div className="row">
                                 <MediaCard 
                                     data={Recomend} 
-                                    pages="/discover/movies/" 
+                                    page="/discover/movies/" 
                                     columns={6}
                                     limit={12}
                                     customStyles={{
