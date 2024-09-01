@@ -1,0 +1,8 @@
+.x:checked+label {
+    background-color: "#b5ed7";
+    color: white;
+}
+
+input[type="radio"] {
+    display: none;
+}
