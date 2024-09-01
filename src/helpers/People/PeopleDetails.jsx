@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import axios from 'axios';
-import PeopleCredits from './PeopleCredits';
+import PeopleCredits from '../All/PeopleCredits';
 
 function PeopleDetails() {
   let { id } = useParams();
@@ -80,19 +80,19 @@ function PeopleDetails() {
                       marginLeft: "50px",
                       overflow: "auto", // Add scrollbars if needed
                       maxHeight: "200px", // Set a max height if you want to restrict the size
-                      width: "100%", 
-                      whiteSpace: "pre-wrap", 
+                      width: "100%", // Adjust width as needed
+                      whiteSpace: "pre-wrap", // Preserve whitespace and line breaks
                     }}
                   >
                     {ImPerson.biography}
                   </span>
                 </p>
-                     
+
               </div>
             </div>
           </div>
-        </div>  
-        <PeopleCredits id={id}/>
+        </div>
+          <PeopleCredits id={id}/>
       </div>
       
     </>
